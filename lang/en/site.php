@@ -67,6 +67,51 @@ return [
     'ph_phone'     => 'Phone (optional)',
     'inq_prefill'  => 'I am interested in the :car. Please contact me.',
 
+    // shop
+    'shop_title'      => 'Spare Parts Store',
+    'shop_sub'        => 'Genuine parts, secure payment and worldwide shipping.',
+    'add_to_cart'     => 'Add to Cart',
+    'in_stock'        => 'In Stock',
+    'out_of_stock'    => 'Out of Stock',
+    'qty'             => 'Qty',
+    'sku'             => 'SKU',
+    'compatible'      => 'Compatible',
+    'related_parts'   => 'Related Parts',
+    'no_parts'        => 'No products found in this category.',
+    'view_detail'     => 'View',
+
+    // cart
+    'cart'            => 'Cart',
+    'cart_title'      => 'Your Cart',
+    'cart_empty'      => 'Your cart is empty.',
+    'remove'          => 'Remove',
+    'update'          => 'Update',
+    'subtotal'        => 'Subtotal',
+    'total'           => 'Total',
+    'checkout'        => 'Checkout',
+    'continue_shop'   => 'Continue Shopping',
+    'item_added'      => 'Item added to cart.',
+
+    // checkout / payment
+    'checkout_title'  => 'Order Details',
+    'order_summary'   => 'Order Summary',
+    'ph_country'      => 'Country',
+    'ph_city'         => 'City',
+    'ph_address'      => 'Shipping Address',
+    'ph_note'         => 'Order note (optional)',
+    'place_order'     => 'Place Order',
+    'payment_title'   => 'Payment',
+    'order_no'        => 'Order No',
+    'order_received'  => 'Your order has been received. Your order number:',
+    'pay_now'         => 'Pay with WeoBank',
+    'payment_pending_msg' => 'Payment will be enabled once the WeoBank integration is complete. Your order has been saved; our team will contact you shortly.',
+    'payment_paid'    => 'Your payment was received successfully. Thank you.',
+    'order_status'    => 'Status',
+    'status_pending'  => 'Awaiting Payment',
+    'status_paid'     => 'Paid',
+    'status_shipped'  => 'Shipped',
+    'status_cancelled'=> 'Cancelled',
+
     // footer
     'rights' => 'All rights reserved.',
 ];

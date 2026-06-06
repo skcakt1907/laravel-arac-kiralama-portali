@@ -62,17 +62,17 @@
       <h2 class="serif">@lang('site.parts_title')</h2>
       <p>@lang('site.parts_sub')</p>
       <br>
-      <a href="{{ url('/#parca') }}" class="btn ghost">@lang('site.parts_btn')</a>
+      <a href="{{ route('shop.index') }}" class="btn ghost">@lang('site.parts_btn')</a>
     </div>
     <div class="part-items">
       @foreach ($parts as $part)
-        <div class="part">
+        <a class="part" href="{{ route('shop.show', $part) }}" style="text-decoration:none;color:inherit">
           <div>
-            <div class="n">{{ $part['name'] }}</div>
-            <div class="c">{{ $part['car'] }}</div>
+            <div class="n">{{ $part->name }}</div>
+            <div class="c">{{ $part->compatible }}</div>
           </div>
-          <div class="p">{{ $part['price'] }}</div>
-        </div>
+          <div class="p">{{ $part->price_formatted }}</div>
+        </a>
       @endforeach
     </div>
   </div>

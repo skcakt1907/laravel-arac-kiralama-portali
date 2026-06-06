@@ -35,4 +35,13 @@ return [
         ],
     ],
 
+    // WeoBank ödeme — API bilgileri müşteriden gelince .env'e yazılacak.
+    'weobank' => [
+        'api_key'     => env('WEOBANK_API_KEY'),
+        'secret'      => env('WEOBANK_SECRET'),
+        'merchant_id' => env('WEOBANK_MERCHANT_ID'),
+        'base_url'    => env('WEOBANK_BASE_URL'),
+        'test_mode'   => env('WEOBANK_TEST_MODE', true),
+    ],
+
 ];

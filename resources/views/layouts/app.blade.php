@@ -1,4 +1,5 @@
 @php($locale = app()->getLocale())
+@php($cartCount = app(\App\Services\Cart::class)->count())
 <!DOCTYPE html>
 <html lang="{{ $locale }}" dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}">
 <head>
@@ -16,10 +17,13 @@
 
 <div class="topbar">
   <span>@lang('site.location')</span>
-  <div class="lang">
-    @foreach (['tr' => 'TR', 'en' => 'EN', 'ar' => 'AR'] as $code => $label)
-      <a href="{{ route('lang.switch', $code) }}" class="{{ $locale === $code ? 'active' : '' }}">{{ $label }}</a>
-    @endforeach
+  <div class="lang" style="gap:14px;align-items:center">
+    <a href="{{ route('cart.index') }}">@lang('site.cart') ({{ $cartCount }})</a>
+    <span style="display:flex;gap:4px">
+      @foreach (['tr' => 'TR', 'en' => 'EN', 'ar' => 'AR'] as $code => $label)
+        <a href="{{ route('lang.switch', $code) }}" class="{{ $locale === $code ? 'active' : '' }}">{{ $label }}</a>
+      @endforeach
+    </span>
   </div>
 </div>
 
@@ -27,7 +31,7 @@
   <div class="container nav-grid">
     <div class="nav-links left">
       <a href="{{ route('vehicles.index') }}">@lang('site.nav_collection')</a>
-      <a href="{{ url('/#parca') }}">@lang('site.nav_parts')</a>
+      <a href="{{ route('shop.index') }}">@lang('site.nav_parts')</a>
     </div>
     <a class="logo" href="{{ url('/') }}">
       <div class="mark serif">@lang('site.brand_mark')</div>

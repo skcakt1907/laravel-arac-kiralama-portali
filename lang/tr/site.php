@@ -67,6 +67,51 @@ return [
     'ph_phone'     => 'Telefon (opsiyonel)',
     'inq_prefill'  => ':car ile ilgileniyorum. Lütfen benimle iletişime geçin.',
 
+    // mağaza
+    'shop_title'      => 'Yedek Parça Mağazası',
+    'shop_sub'        => 'Orijinal parçalar, güvenli ödeme ve dünya geneline gönderim.',
+    'add_to_cart'     => 'Sepete Ekle',
+    'in_stock'        => 'Stokta',
+    'out_of_stock'    => 'Tükendi',
+    'qty'             => 'Adet',
+    'sku'             => 'Ürün Kodu',
+    'compatible'      => 'Uyumlu',
+    'related_parts'   => 'Benzer Parçalar',
+    'no_parts'        => 'Bu kategoride ürün bulunamadı.',
+    'view_detail'     => 'İncele',
+
+    // sepet
+    'cart'            => 'Sepet',
+    'cart_title'      => 'Sepetiniz',
+    'cart_empty'      => 'Sepetiniz boş.',
+    'remove'          => 'Kaldır',
+    'update'          => 'Güncelle',
+    'subtotal'        => 'Ara Toplam',
+    'total'           => 'Toplam',
+    'checkout'        => 'Siparişi Tamamla',
+    'continue_shop'   => 'Alışverişe Devam',
+    'item_added'      => 'Ürün sepete eklendi.',
+
+    // ödeme / sipariş
+    'checkout_title'  => 'Sipariş Bilgileri',
+    'order_summary'   => 'Sipariş Özeti',
+    'ph_country'      => 'Ülke',
+    'ph_city'         => 'Şehir',
+    'ph_address'      => 'Teslimat Adresi',
+    'ph_note'         => 'Sipariş notu (opsiyonel)',
+    'place_order'     => 'Siparişi Oluştur',
+    'payment_title'   => 'Ödeme',
+    'order_no'        => 'Sipariş No',
+    'order_received'  => 'Siparişiniz alındı. Sipariş numaranız:',
+    'pay_now'         => 'WeoBank ile Öde',
+    'payment_pending_msg' => 'Ödeme altyapısı (WeoBank) entegrasyonu tamamlandığında ödemeniz aktifleşecek. Siparişiniz kaydedildi; ekibimiz en kısa sürede sizinle iletişime geçecek.',
+    'payment_paid'    => 'Ödemeniz başarıyla alındı. Teşekkür ederiz.',
+    'order_status'    => 'Durum',
+    'status_pending'  => 'Ödeme Bekleniyor',
+    'status_paid'     => 'Ödendi',
+    'status_shipped'  => 'Kargolandı',
+    'status_cancelled'=> 'İptal',
+
     // footer
     'rights' => 'Tüm hakları saklıdır.',
 ];

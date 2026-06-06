@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Part;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
@@ -22,13 +23,16 @@ class HomeController extends Controller
             $cars = Vehicle::published()->latest()->take(6)->get();
         }
 
-        // NOT: Parçalar Faz 3'te DB'den gelecek; şimdilik örnek.
-        $parts = [
-            ['name' => 'Karbon Fren Diski Seti', 'car' => 'FERRARI · 488 / F8',     'price' => '$4.850'],
-            ['name' => 'LED Far Ünitesi',        'car' => 'ROLLS-ROYCE · GHOST',    'price' => '$7.200'],
-            ['name' => 'Alcantara Direksiyon',   'car' => 'LAMBORGHINI · URUS',     'price' => '$2.390'],
-            ['name' => 'Titanyum Egzoz Sistemi', 'car' => 'McLAREN · 720S',         'price' => '$11.600'],
-        ];
+        // Ana sayfa parça vitrini: öne çıkan parçalar (DB'den)
+        $parts = Part::published()
+            ->where('is_featured', true)
+            ->orderBy('sort_order')
+            ->take(4)
+            ->get();
+
+        if ($parts->isEmpty()) {
+            $parts = Part::published()->latest()->take(4)->get();
+        }
 
         return view('home', compact('brands', 'cars', 'parts'));
     }
