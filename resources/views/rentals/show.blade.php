@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', $rental->brand . ' ' . $rental->model)
+@if ($rental->has_image)@section('og_image', $rental->image_url)@endif
 
 @section('content')
 <section>

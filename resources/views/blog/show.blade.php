@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('title', $post->title)
-@section('meta_description', $post->excerpt ?? '')
+@section('meta_description', \Illuminate\Support\Str::limit(strip_tags($post->excerpt ?? $post->body ?? ''), 160))
+@if ($post->has_image)@section('og_image', $post->image_url)@endif
 
 @section('content')
 <section>

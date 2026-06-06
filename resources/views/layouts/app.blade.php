@@ -6,7 +6,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>@yield('title', config('app.name')) — @lang('site.brand_sub')</title>
-<meta name="description" content="@yield('meta_description', __('site.about_text'))">
+<meta name="description" content="@yield('meta_description', Str::limit(strip_tags(setting_l('about', __('site.about_text'))), 160))">
+<link rel="canonical" href="{{ url()->current() }}">
+
+{{-- Open Graph / Twitter --}}
+<meta property="og:site_name" content="{{ config('app.name') }}">
+<meta property="og:title" content="@yield('title', config('app.name'))">
+<meta property="og:description" content="@yield('meta_description', Str::limit(strip_tags(setting_l('about', __('site.about_text'))), 160))">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:locale" content="{{ $locale === 'ar' ? 'ar_AE' : ($locale === 'en' ? 'en_US' : 'tr_TR') }}">
+<meta property="og:image" content="@yield('og_image', asset('img/og-default.jpg'))">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet">

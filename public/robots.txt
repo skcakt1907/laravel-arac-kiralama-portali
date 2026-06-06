@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /yonetim
+Disallow: /sepet
+Disallow: /odeme
+
+Sitemap: /sitemap.xml

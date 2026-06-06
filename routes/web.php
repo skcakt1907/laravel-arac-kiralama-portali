@@ -45,6 +45,8 @@ Route::get('/kiralama/{rental}', [\App\Http\Controllers\RentalController::class,
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{post}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 
+Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
+
 Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.switch');
 
 /*

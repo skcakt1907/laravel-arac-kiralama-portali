@@ -1,6 +1,25 @@
 @extends('layouts.app')
 
 @section('title', $vehicle->brand . ' ' . $vehicle->model)
+@section('meta_description', \Illuminate\Support\Str::limit($vehicle->description ?: ($vehicle->brand . ' ' . $vehicle->model . ' · ' . $vehicle->specs_line), 160))
+@if ($vehicle->has_image)@section('og_image', $vehicle->image_url)@endif
+
+@push('head')
+<script type="application/ld+json">
+{!! json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'Car',
+    'name' => $vehicle->brand . ' ' . $vehicle->model,
+    'brand' => ['@type' => 'Brand', 'name' => $vehicle->brand],
+    'model' => $vehicle->model,
+    'vehicleModelDate' => $vehicle->year,
+    'mileageFromOdometer' => $vehicle->mileage_km ? ['@type' => 'QuantitativeValue', 'value' => $vehicle->mileage_km, 'unitCode' => 'KMT'] : null,
+    'color' => $vehicle->color,
+    'image' => $vehicle->image_url,
+    'url' => url()->current(),
+], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+</script>
+@endpush
 
 @section('content')
 <section>

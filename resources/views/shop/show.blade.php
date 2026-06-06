@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $part->name)
+@if ($part->cover_image)@section('og_image', asset('storage/' . $part->cover_image))@endif
 
 @section('content')
 <section>
