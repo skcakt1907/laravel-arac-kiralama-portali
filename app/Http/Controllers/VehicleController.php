@@ -20,8 +20,9 @@ class VehicleController extends Controller
 
         $vehicles = Vehicle::published()
             ->when($activeBrand, fn ($q) => $q->where('brand', $activeBrand))
-            ->orderBy('sort_order')
-            ->orderByDesc('id')
+            ->when($request->query('sort') === 'new',
+                fn ($q) => $q->orderByDesc('id'),
+                fn ($q) => $q->orderBy('sort_order')->orderByDesc('id'))
             ->paginate(12)
             ->withQueryString();
 

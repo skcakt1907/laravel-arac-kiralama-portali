@@ -51,6 +51,15 @@ return [
     'send'      => 'Send',
     'sent_ok'   => 'Your message has been received. We will get back to you shortly.',
 
+    // mega menu
+    'brands'           => 'Brands',
+    'categories'       => 'Categories',
+    'all_vehicles'     => 'All Vehicles',
+    'all_vehicles_sub' => 'The entire collection',
+    'newest'           => 'Newest',
+    'newest_sub'       => 'Recently added',
+    'contact_sub'      => 'For price & details',
+
     // vehicles / detail
     'all'          => 'All',
     'no_vehicles'  => 'No vehicles match this selection.',

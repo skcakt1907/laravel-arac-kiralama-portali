@@ -30,13 +30,57 @@
 <nav>
   <div class="container nav-grid">
     <div class="nav-links left">
-      <a href="{{ route('vehicles.index') }}">@lang('site.nav_collection')</a>
-      <a href="{{ route('shop.index') }}">@lang('site.nav_parts')</a>
+      {{-- ARAÇLAR mega menü --}}
+      <div class="nav-item">
+        <a href="{{ route('vehicles.index') }}">@lang('site.nav_collection') <span class="caret">▼</span></a>
+        <div class="mega">
+          <div class="mega-inner">
+            <div class="mega-quick">
+              <div class="mega-title">@lang('site.col_eye')</div>
+              <a href="{{ route('vehicles.index') }}">@lang('site.all_vehicles')<small>@lang('site.all_vehicles_sub')</small></a>
+              <a href="{{ route('vehicles.index', ['sort' => 'new']) }}">@lang('site.newest')<small>@lang('site.newest_sub')</small></a>
+              <a href="{{ url('/#iletisim') }}">@lang('site.cta2')<small>@lang('site.contact_sub')</small></a>
+            </div>
+            <div>
+              <div class="mega-title">@lang('site.brands')</div>
+              <div class="brand-grid">
+                @foreach ($navBrands as $b)
+                  <a class="brand-link" href="{{ route('vehicles.index', ['brand' => $b->brand]) }}">
+                    <span>{{ $b->brand }}</span><span class="cnt">{{ $b->c }}</span>
+                  </a>
+                @endforeach
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{-- MAĞAZA mega menü --}}
+      <div class="nav-item">
+        <a href="{{ route('shop.index') }}">@lang('site.nav_parts') <span class="caret">▼</span></a>
+        <div class="mega mega-sm">
+          <div class="mega-inner">
+            <div>
+              <div class="mega-title">@lang('site.categories')</div>
+              <div class="brand-grid">
+                <a class="brand-link" href="{{ route('shop.index') }}"><span>@lang('site.all')</span></a>
+                @foreach ($navCategories as $cat)
+                  <a class="brand-link" href="{{ route('shop.index', ['category' => $cat->slug]) }}">
+                    <span>{{ $cat->name }}</span>
+                  </a>
+                @endforeach
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
     <a class="logo" href="{{ url('/') }}">
       <div class="mark serif">@lang('site.brand_mark')</div>
       <div class="sub">@lang('site.brand_sub')</div>
     </a>
+
     <div class="nav-links">
       <a href="{{ url('/#hakkimizda') }}">@lang('site.nav_about')</a>
       <a href="{{ url('/#iletisim') }}">@lang('site.nav_contact')</a>

@@ -51,6 +51,15 @@ return [
     'send'      => 'Gönder',
     'sent_ok'   => 'Mesajınız alındı. En kısa sürede size dönüş yapacağız.',
 
+    // mega menü
+    'brands'           => 'Markalar',
+    'categories'       => 'Kategoriler',
+    'all_vehicles'     => 'Tüm Araçlar',
+    'all_vehicles_sub' => 'Koleksiyonun tamamı',
+    'newest'           => 'En Yeniler',
+    'newest_sub'       => 'Son eklenen araçlar',
+    'contact_sub'      => 'Fiyat ve detay için',
+
     // araçlar / detay
     'all'          => 'Tümü',
     'no_vehicles'  => 'Bu kritere uygun araç bulunamadı.',

@@ -57,6 +57,40 @@ nav{
 .logo .mark{font-size:26px;letter-spacing:.32em;color:var(--champ)}
 .logo .sub{font-size:9px;letter-spacing:.52em;color:var(--gold);margin-top:3px;text-transform:uppercase}
 
+/* ── mega menu ── */
+.nav-item{position:static;display:flex;align-items:center}
+.nav-links .nav-item > a{display:inline-flex;align-items:center;gap:7px}
+.caret{font-size:8px;color:var(--gold);transition:transform .3s}
+.nav-item:hover .caret{transform:rotate(180deg)}
+.mega{
+  position:absolute;left:0;right:0;top:100%;
+  background:rgba(11,10,8,.98);backdrop-filter:blur(16px);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  box-shadow:0 34px 70px -24px rgba(0,0,0,.8);
+  opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none;
+  transition:opacity .26s,transform .26s,visibility .26s;z-index:60;padding:40px 0;
+}
+.nav-item:hover .mega{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+.mega-inner{width:min(1200px,92%);margin:0 auto;display:grid;grid-template-columns:250px 1fr;gap:50px}
+.mega-title{font-size:10.5px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+.mega-quick{border-inline-end:1px solid var(--line);padding-inline-end:40px;display:flex;flex-direction:column;gap:2px}
+.mega-quick a{
+  display:block;color:var(--text);text-decoration:none;padding:11px 0;font-size:13px;
+  letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.05);transition:.25s;
+}
+.mega-quick a:hover{color:var(--gold-l);padding-inline-start:8px}
+.mega-quick a small{display:block;font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:none;margin-top:3px}
+.brand-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px 30px}
+.brand-link{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  color:var(--text);text-decoration:none;padding:9px 0;
+  border-bottom:1px solid rgba(255,255,255,.05);font-size:13px;letter-spacing:.06em;transition:.25s;
+}
+.brand-link:hover{color:var(--gold-l);padding-inline-start:6px}
+.brand-link .cnt{color:var(--muted);font-size:11px;font-family:'Marcellus',serif}
+.mega-sm .mega-inner{grid-template-columns:1fr}
+.mega-sm .brand-grid{grid-template-columns:repeat(3,1fr)}
+
 /* ── hero ── */
 .hero{
   min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
