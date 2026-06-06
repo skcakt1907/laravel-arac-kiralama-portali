@@ -143,6 +143,25 @@ return [
     'read_more'    => 'Read More',
     'recent_posts' => 'Recent Posts',
 
+    // membership
+    'login'         => 'Login',
+    'register'      => 'Sign Up',
+    'logout'        => 'Logout',
+    'my_account'    => 'My Account',
+    'login_title'   => 'Member Login',
+    'register_title'=> 'Create Account',
+    'name'          => 'Full Name',
+    'password'      => 'Password',
+    'password_again'=> 'Password (again)',
+    'remember_me'   => 'Remember me',
+    'no_account'    => "Don't have an account? Sign up",
+    'have_account'  => 'Already a member? Log in',
+    'my_orders'     => 'My Orders',
+    'profile_info'  => 'Profile Information',
+    'no_orders'     => 'You have no orders yet.',
+    'save'          => 'Save',
+    'welcome'       => 'Welcome',
+
     // footer
     'rights' => 'All rights reserved.',
 ];

@@ -24,6 +24,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'admin' => \App\Http\Middleware\AdminOnly::class,
         ]);
+
+        // Giriş yapmamış ziyaretçiyi üye giriş sayfasına yönlendir
+        $middleware->redirectGuestsTo(fn () => route('member.login'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

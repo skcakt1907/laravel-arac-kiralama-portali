@@ -30,6 +30,13 @@
 <div class="topbar">
   <span>@lang('site.location')</span>
   <div class="lang" style="gap:14px;align-items:center">
+    @auth
+      <a href="{{ route('member.account') }}">@lang('site.my_account')</a>
+      <form method="POST" action="{{ route('member.logout') }}" style="display:inline">@csrf<button type="submit" style="background:none;border:none;color:inherit;font:inherit;letter-spacing:.18em;cursor:pointer;padding:0">@lang('site.logout')</button></form>
+    @else
+      <a href="{{ route('member.login') }}">@lang('site.login')</a>
+      <a href="{{ route('member.register') }}">@lang('site.register')</a>
+    @endauth
     <a href="{{ route('cart.index') }}">@lang('site.cart') ({{ $cartCount }})</a>
     <span style="display:flex;gap:4px">
       @foreach (['tr' => 'TR', 'en' => 'EN', 'ar' => 'AR'] as $code => $label)

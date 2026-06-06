@@ -143,6 +143,25 @@ return [
     'read_more'    => 'Devamını Oku',
     'recent_posts' => 'Son Yazılar',
 
+    // üyelik
+    'login'         => 'Giriş',
+    'register'      => 'Üye Ol',
+    'logout'        => 'Çıkış',
+    'my_account'    => 'Hesabım',
+    'login_title'   => 'Üye Girişi',
+    'register_title'=> 'Üye Ol',
+    'name'          => 'Ad Soyad',
+    'password'      => 'Parola',
+    'password_again'=> 'Parola (Tekrar)',
+    'remember_me'   => 'Beni hatırla',
+    'no_account'    => 'Hesabın yok mu? Üye ol',
+    'have_account'  => 'Zaten üye misin? Giriş yap',
+    'my_orders'     => 'Siparişlerim',
+    'profile_info'  => 'Profil Bilgileri',
+    'no_orders'     => 'Henüz siparişiniz yok.',
+    'save'          => 'Kaydet',
+    'welcome'       => 'Hoş geldiniz',
+
     // footer
     'rights' => 'Tüm hakları saklıdır.',
 ];

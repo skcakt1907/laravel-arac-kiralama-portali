@@ -45,6 +45,17 @@ Route::get('/kiralama/{rental}', [\App\Http\Controllers\RentalController::class,
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{post}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 
+// Üyelik
+Route::get('/uye/kayit', [\App\Http\Controllers\MemberAuthController::class, 'showRegister'])->name('member.register');
+Route::post('/uye/kayit', [\App\Http\Controllers\MemberAuthController::class, 'register'])->name('member.register.post');
+Route::get('/uye/giris', [\App\Http\Controllers\MemberAuthController::class, 'showLogin'])->name('member.login');
+Route::post('/uye/giris', [\App\Http\Controllers\MemberAuthController::class, 'login'])->name('member.login.post');
+Route::post('/uye/cikis', [\App\Http\Controllers\MemberAuthController::class, 'logout'])->name('member.logout');
+Route::middleware('auth')->group(function () {
+    Route::get('/hesabim', [\App\Http\Controllers\MemberController::class, 'account'])->name('member.account');
+    Route::put('/hesabim', [\App\Http\Controllers\MemberController::class, 'updateProfile'])->name('member.profile');
+});
+
 Route::get('/sitemap.xml', [\App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.switch');
