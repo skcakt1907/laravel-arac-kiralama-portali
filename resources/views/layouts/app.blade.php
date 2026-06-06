@@ -29,6 +29,7 @@
 
 <nav>
   <div class="container nav-grid">
+    <button class="hamburger" type="button" aria-label="Menü" onclick="document.getElementById('mobileMenu').classList.toggle('open')">☰</button>
     <div class="nav-links left">
       {{-- ARAÇLAR mega menü --}}
       <div class="nav-item">
@@ -96,6 +97,19 @@
       <a href="{{ route('pages.about') }}">@lang('site.nav_about')</a>
       <a href="{{ route('pages.contact') }}">@lang('site.nav_contact')</a>
     </div>
+
+    <span class="hamburger" style="visibility:hidden" aria-hidden="true">☰</span>
+  </div>
+
+  {{-- Mobil menü --}}
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="{{ route('vehicles.index') }}">@lang('site.nav_collection')</a>
+    <a href="{{ route('rentals.index') }}">@lang('site.nav_rentals')</a>
+    <a href="{{ route('shop.index') }}">@lang('site.nav_parts')</a>
+    <a href="{{ route('blog.index') }}">@lang('site.nav_blog')</a>
+    <a href="{{ route('pages.about') }}">@lang('site.nav_about')</a>
+    <a href="{{ route('pages.contact') }}">@lang('site.nav_contact')</a>
+    <a href="{{ route('cart.index') }}">@lang('site.cart') ({{ $cartCount }})</a>
   </div>
 </nav>
 

@@ -251,9 +251,20 @@ footer{
 }
 footer .f-logo{font-family:'Marcellus',serif;font-size:18px;letter-spacing:.3em;color:var(--gold);margin-bottom:14px}
 
+/* ── hamburger + mobil menü ── */
+.hamburger{display:none;background:none;border:1px solid var(--line);color:var(--gold-l);
+  font-size:18px;line-height:1;padding:9px 12px;cursor:pointer;border-radius:3px}
+.mobile-menu{display:none}
+.mobile-menu a{display:block;padding:15px 4%;color:var(--text);text-decoration:none;font-size:14px;
+  letter-spacing:.14em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.05);transition:.2s}
+.mobile-menu a:hover{color:var(--gold-l);background:rgba(200,164,77,.06)}
+
 @media(max-width:920px){
-  .nav-grid{grid-template-columns:1fr;gap:14px}
-  .nav-links{justify-content:center!important;flex-wrap:wrap;gap:20px}
+  .nav-grid{grid-template-columns:auto 1fr auto;gap:14px;align-items:center}
+  .nav-links{display:none!important}
+  .hamburger{display:block;justify-self:start}
+  .logo{justify-self:center}
+  .mobile-menu.open{display:block;border-top:1px solid var(--line);background:rgba(11,10,8,.99)}
   .parts-grid,.contact-grid{grid-template-columns:1fr}
   .stats{gap:46px}
 }
