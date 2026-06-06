@@ -10,6 +10,10 @@
       <h2>@lang('site.cart_title')</h2>
     </div>
 
+    @if (session('sent_ok') === 'added')
+      <div class="flash">@lang('site.item_added')</div>
+    @endif
+
     @if ($items->isEmpty())
       <p class="about-text" style="margin-bottom:30px">@lang('site.cart_empty')</p>
       <div style="text-align:center"><a href="{{ route('shop.index') }}" class="btn ghost">@lang('site.continue_shop')</a></div>
