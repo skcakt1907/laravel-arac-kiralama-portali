@@ -33,6 +33,18 @@ Route::get('/odeme/{order}', [PaymentController::class, 'show'])->name('payment.
 Route::post('/odeme/{order}/ode', [PaymentController::class, 'pay'])->name('payment.pay');
 Route::match(['get', 'post'], '/weobank/callback', [PaymentController::class, 'callback'])->name('payment.callback');
 
+// Kurumsal sayfalar
+Route::get('/hakkimizda', [\App\Http\Controllers\PageController::class, 'about'])->name('pages.about');
+Route::get('/iletisim', [\App\Http\Controllers\PageController::class, 'contact'])->name('pages.contact');
+
+// Araç kiralama
+Route::get('/kiralama', [\App\Http\Controllers\RentalController::class, 'index'])->name('rentals.index');
+Route::get('/kiralama/{rental}', [\App\Http\Controllers\RentalController::class, 'show'])->name('rentals.show');
+
+// Blog
+Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{post}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
+
 Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.switch');
 
 /*
@@ -84,5 +96,21 @@ Route::prefix('yonetim')->name('admin.')->group(function () {
         Route::get('hesap', [\App\Http\Controllers\Admin\AccountController::class, 'edit'])->name('account.edit');
         Route::put('hesap/profil', [\App\Http\Controllers\Admin\AccountController::class, 'updateProfile'])->name('account.profile');
         Route::put('hesap/parola', [\App\Http\Controllers\Admin\AccountController::class, 'updatePassword'])->name('account.password');
+
+        // Kiralık araçlar
+        Route::get('kiralama', [\App\Http\Controllers\Admin\RentalAdminController::class, 'index'])->name('rentals.index');
+        Route::get('kiralama/yeni', [\App\Http\Controllers\Admin\RentalAdminController::class, 'create'])->name('rentals.create');
+        Route::post('kiralama', [\App\Http\Controllers\Admin\RentalAdminController::class, 'store'])->name('rentals.store');
+        Route::get('kiralama/{rental}/duzenle', [\App\Http\Controllers\Admin\RentalAdminController::class, 'edit'])->name('rentals.edit');
+        Route::put('kiralama/{rental}', [\App\Http\Controllers\Admin\RentalAdminController::class, 'update'])->name('rentals.update');
+        Route::delete('kiralama/{rental}', [\App\Http\Controllers\Admin\RentalAdminController::class, 'destroy'])->name('rentals.destroy');
+
+        // Blog
+        Route::get('blog', [\App\Http\Controllers\Admin\PostAdminController::class, 'index'])->name('posts.index');
+        Route::get('blog/yeni', [\App\Http\Controllers\Admin\PostAdminController::class, 'create'])->name('posts.create');
+        Route::post('blog', [\App\Http\Controllers\Admin\PostAdminController::class, 'store'])->name('posts.store');
+        Route::get('blog/{post}/duzenle', [\App\Http\Controllers\Admin\PostAdminController::class, 'edit'])->name('posts.edit');
+        Route::put('blog/{post}', [\App\Http\Controllers\Admin\PostAdminController::class, 'update'])->name('posts.update');
+        Route::delete('blog/{post}', [\App\Http\Controllers\Admin\PostAdminController::class, 'destroy'])->name('posts.destroy');
     });
 });

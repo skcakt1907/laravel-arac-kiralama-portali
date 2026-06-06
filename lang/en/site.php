@@ -121,6 +121,28 @@ return [
     'status_shipped'  => 'Shipped',
     'status_cancelled'=> 'Cancelled',
 
+    // navigation extra
+    'nav_rentals' => 'Rentals',
+    'nav_blog'    => 'Blog',
+
+    // rentals
+    'rental_eye'   => 'Rental',
+    'rental_title' => 'Cars for Rent',
+    'rental_sub'   => 'Daily rental from our luxury fleet. Send a request for details and reservation.',
+    'no_rentals'   => 'No rental cars available right now.',
+    'rent_now'     => 'Rent',
+    'rent_request' => 'Send Rental Request',
+    'rent_prefill' => 'I would like to rent the :car. Please contact me for dates and pricing.',
+    'day'          => 'day',
+    'seats'        => 'Seats',
+
+    // blog
+    'blog_eye'     => 'Journal',
+    'blog_title'   => 'Blog',
+    'no_posts'     => 'No posts yet.',
+    'read_more'    => 'Read More',
+    'recent_posts' => 'Recent Posts',
+
     // footer
     'rights' => 'All rights reserved.',
 ];

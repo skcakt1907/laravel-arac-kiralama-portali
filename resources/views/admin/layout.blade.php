@@ -18,9 +18,11 @@
       @php($r = request()->route()->getName())
       <a href="{{ route('admin.dashboard') }}" class="{{ $r === 'admin.dashboard' ? 'active' : '' }}">◆ <span>Genel Bakış</span></a>
       <a href="{{ route('admin.vehicles.index') }}" class="{{ str_starts_with($r, 'admin.vehicles') ? 'active' : '' }}">⛟ <span>Araçlar</span></a>
+      <a href="{{ route('admin.rentals.index') }}" class="{{ str_starts_with($r, 'admin.rentals') ? 'active' : '' }}">🔑 <span>Kiralık Araçlar</span></a>
       <a href="{{ route('admin.parts.index') }}" class="{{ str_starts_with($r, 'admin.parts') ? 'active' : '' }}">⚙ <span>Parçalar</span></a>
       <a href="{{ route('admin.categories.index') }}" class="{{ str_starts_with($r, 'admin.categories') ? 'active' : '' }}">▤ <span>Kategoriler</span></a>
       <a href="{{ route('admin.orders.index') }}" class="{{ str_starts_with($r, 'admin.orders') ? 'active' : '' }}">🧾 <span>Siparişler</span></a>
+      <a href="{{ route('admin.posts.index') }}" class="{{ str_starts_with($r, 'admin.posts') ? 'active' : '' }}">✎ <span>Blog</span></a>
 
       <details class="side-group" {{ (str_starts_with($r, 'admin.settings') || str_starts_with($r, 'admin.account')) ? 'open' : '' }}>
         <summary>⚙ <span>Site Ayarları</span></summary>

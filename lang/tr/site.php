@@ -121,6 +121,28 @@ return [
     'status_shipped'  => 'Kargolandı',
     'status_cancelled'=> 'İptal',
 
+    // navigasyon ek
+    'nav_rentals' => 'Kiralama',
+    'nav_blog'    => 'Blog',
+
+    // kiralama
+    'rental_eye'   => 'Kiralama',
+    'rental_title' => 'Kiralık Araçlar',
+    'rental_sub'   => 'Lüks araç filomuzla günlük kiralama. Detaylar ve rezervasyon için talep oluşturun.',
+    'no_rentals'   => 'Şu an kiralık araç bulunmuyor.',
+    'rent_now'     => 'Kirala',
+    'rent_request' => 'Kiralama Talebi Gönder',
+    'rent_prefill' => ':car aracını kiralamak istiyorum. Lütfen tarih ve fiyat için benimle iletişime geçin.',
+    'day'          => 'gün',
+    'seats'        => 'Koltuk',
+
+    // blog
+    'blog_eye'     => 'Günlük',
+    'blog_title'   => 'Blog',
+    'no_posts'     => 'Henüz yazı yok.',
+    'read_more'    => 'Devamını Oku',
+    'recent_posts' => 'Son Yazılar',
+
     // footer
     'rights' => 'Tüm hakları saklıdır.',
 ];

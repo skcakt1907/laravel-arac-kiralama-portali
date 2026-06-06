@@ -91,8 +91,10 @@
     </a>
 
     <div class="nav-links">
-      <a href="{{ url('/#hakkimizda') }}">@lang('site.nav_about')</a>
-      <a href="{{ url('/#iletisim') }}">@lang('site.nav_contact')</a>
+      <a href="{{ route('rentals.index') }}">@lang('site.nav_rentals')</a>
+      <a href="{{ route('blog.index') }}">@lang('site.nav_blog')</a>
+      <a href="{{ route('pages.about') }}">@lang('site.nav_about')</a>
+      <a href="{{ route('pages.contact') }}">@lang('site.nav_contact')</a>
     </div>
   </div>
 </nav>

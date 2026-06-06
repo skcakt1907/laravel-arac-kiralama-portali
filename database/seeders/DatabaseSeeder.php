@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
             SettingsSeeder::class,
             VehicleSeeder::class,
             PartSeeder::class,
+            RentalSeeder::class,
+            PostSeeder::class,
         ]);
     }
 }
