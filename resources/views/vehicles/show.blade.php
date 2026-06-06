@@ -28,11 +28,22 @@
     @if (session('sent_ok'))
       <div class="flash">@lang('site.sent_ok')</div>
     @endif
+    @if (session('compare_msg'))
+      <div class="flash">{{ session('compare_msg') }}</div>
+    @endif
 
     <div class="sec-head" style="margin-bottom:40px">
       <div class="eyebrow">{{ strtoupper($vehicle->brand) }}</div>
       <h2>{{ $vehicle->model }}</h2>
+      @if ($vehicle->is_sold)<div style="margin-top:10px"><span class="sold-badge" style="position:static;display:inline-block">@lang('site.sold')</span></div>@endif
       <span class="diamond">✦</span>
+      <div style="margin-top:18px">
+        <form method="POST" action="{{ route('compare.add', $vehicle) }}" style="display:inline">
+          @csrf
+          <button class="btn ghost" style="cursor:pointer">@lang('site.compare_add')</button>
+        </form>
+        <a href="{{ route('compare.index') }}" class="btn ghost">@lang('site.compare')</a>
+      </div>
     </div>
 
     <div class="contact-grid" style="align-items:start">

@@ -32,7 +32,8 @@
     <div class="field">
       <label>Durum</label>
       <div class="check" style="margin-bottom:10px"><input type="checkbox" name="is_published" value="1" id="pub" {{ old('is_published', $vehicle->is_published ?? true) ? 'checked' : '' }}><label for="pub" style="margin:0;text-transform:none">Yayında</label></div>
-      <div class="check"><input type="checkbox" name="is_featured" value="1" id="feat" {{ old('is_featured', $vehicle->is_featured ?? false) ? 'checked' : '' }}><label for="feat" style="margin:0;text-transform:none">Ana sayfa vitrini</label></div>
+      <div class="check" style="margin-bottom:10px"><input type="checkbox" name="is_featured" value="1" id="feat" {{ old('is_featured', $vehicle->is_featured ?? false) ? 'checked' : '' }}><label for="feat" style="margin:0;text-transform:none">Ana sayfa vitrini</label></div>
+      <div class="check"><input type="checkbox" name="is_sold" value="1" id="sold" {{ old('is_sold', $vehicle->is_sold ?? false) ? 'checked' : '' }}><label for="sold" style="margin:0;text-transform:none">Satıldı</label></div>
     </div>
   </div>
 

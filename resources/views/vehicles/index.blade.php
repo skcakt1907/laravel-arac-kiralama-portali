@@ -12,6 +12,12 @@
       <span class="diamond">✦</span>
     </div>
 
+    {{-- Mevcut / Satılanlar --}}
+    <div class="lang" style="justify-content:center;gap:8px;margin-bottom:18px">
+      <a href="{{ route('vehicles.index') }}" class="{{ $showSold ? '' : 'active' }}">@lang('site.available_cars')</a>
+      <a href="{{ route('vehicles.index', ['sold' => 1]) }}" class="{{ $showSold ? 'active' : '' }}">@lang('site.sold_cars')</a>
+    </div>
+
     {{-- Marka filtresi --}}
     <div class="lang" style="justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:48px">
       <a href="{{ route('vehicles.index') }}" class="{{ $activeBrand ? '' : 'active' }}">@lang('site.all')</a>

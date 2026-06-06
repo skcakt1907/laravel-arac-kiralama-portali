@@ -12,6 +12,7 @@ class Vehicle extends Model
     protected $casts = [
         'is_published' => 'boolean',
         'is_featured'  => 'boolean',
+        'is_sold'      => 'boolean',
     ];
 
     public function images(): HasMany
@@ -28,6 +29,16 @@ class Vehicle extends Model
     public function scopePublished($query)
     {
         return $query->where('is_published', true);
+    }
+
+    public function scopeAvailable($query)
+    {
+        return $query->where('is_sold', false);
+    }
+
+    public function scopeSold($query)
+    {
+        return $query->where('is_sold', true);
     }
 
     public function getHasImageAttribute(): bool

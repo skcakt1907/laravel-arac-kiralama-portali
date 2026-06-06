@@ -1,5 +1,6 @@
 {{-- Tek araç kartı. Beklenen: $vehicle (App\Models\Vehicle) --}}
-<a class="car-card" href="{{ route('vehicles.show', $vehicle) }}" style="text-decoration:none;color:inherit;display:block">
+<a class="car-card {{ $vehicle->is_sold ? 'is-sold' : '' }}" href="{{ route('vehicles.show', $vehicle) }}" style="text-decoration:none;color:inherit;display:block">
+  @if ($vehicle->is_sold)<span class="sold-badge">@lang('site.sold')</span>@endif
   <div class="car-brand">{{ strtoupper($vehicle->brand) }}</div>
   <div class="car-model">{{ $vehicle->model }}</div>
 

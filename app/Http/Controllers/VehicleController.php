@@ -17,8 +17,10 @@ class VehicleController extends Controller
             ->pluck('brand');
 
         $activeBrand = $request->query('brand');
+        $showSold = $request->boolean('sold');
 
         $vehicles = Vehicle::published()
+            ->when($showSold, fn ($q) => $q->sold(), fn ($q) => $q->available())
             ->when($activeBrand, fn ($q) => $q->where('brand', $activeBrand))
             ->when($request->query('sort') === 'new',
                 fn ($q) => $q->orderByDesc('id'),
@@ -26,7 +28,7 @@ class VehicleController extends Controller
             ->paginate(12)
             ->withQueryString();
 
-        return view('vehicles.index', compact('vehicles', 'brands', 'activeBrand'));
+        return view('vehicles.index', compact('vehicles', 'brands', 'activeBrand', 'showSold'));
     }
 
     public function show(Vehicle $vehicle)

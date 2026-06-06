@@ -176,6 +176,13 @@ section{padding:110px 0}
 .car-card:hover::before{opacity:1}
 .car-card svg{width:100%;height:auto;margin:6px 0 20px;opacity:.92}
 .car-thumb{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;margin:6px 0 20px;border:1px solid rgba(200,164,77,.12);background:#0e0c08}
+.sold-badge{position:absolute;top:16px;inset-inline-end:16px;z-index:3;background:rgba(156,59,59,.92);color:#fff;
+  font-size:10px;letter-spacing:.22em;text-transform:uppercase;padding:6px 12px;border-radius:3px;font-weight:500}
+.car-card.is-sold .car-thumb{filter:grayscale(.55) brightness(.8)}
+.compare-table{width:100%;border-collapse:collapse;margin-top:20px}
+.compare-table th,.compare-table td{border:1px solid var(--line);padding:14px 16px;text-align:start;font-size:14px}
+.compare-table th{background:var(--bg2);color:var(--gold);font-family:'Marcellus',serif;letter-spacing:.04em}
+.compare-table .rowlabel{color:var(--muted);font-size:12px;letter-spacing:.1em;text-transform:uppercase;width:160px}
 .car-brand{font-size:11px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase}
 .car-model{font-family:'Marcellus',serif;font-size:27px;letter-spacing:.05em;color:var(--champ);margin:7px 0 10px}
 .car-specs{font-size:12.5px;color:var(--muted);letter-spacing:.14em;margin-bottom:22px}

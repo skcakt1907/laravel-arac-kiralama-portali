@@ -14,7 +14,7 @@
 <div class="panel">
   <table>
     <thead>
-      <tr><th>Görsel</th><th>Marka / Model</th><th>Yıl</th><th>KM</th><th>Yayın</th><th>Vitrin</th><th>İşlem</th></tr>
+      <tr><th>Görsel</th><th>Marka / Model</th><th>Yıl</th><th>KM</th><th>Yayın</th><th>Vitrin</th><th>Satıldı</th><th>İşlem</th></tr>
     </thead>
     <tbody>
       @forelse ($vehicles as $v)
@@ -36,6 +36,12 @@
             <form method="POST" action="{{ route('admin.vehicles.toggle', $v) }}">@csrf @method('PATCH')
               <input type="hidden" name="field" value="is_featured">
               <button class="badge {{ $v->is_featured ? 'on' : 'off' }}" style="cursor:pointer;background:none">{{ $v->is_featured ? '★ Vitrin' : '☆' }}</button>
+            </form>
+          </td>
+          <td>
+            <form method="POST" action="{{ route('admin.vehicles.toggle', $v) }}">@csrf @method('PATCH')
+              <input type="hidden" name="field" value="is_sold">
+              <button class="badge {{ $v->is_sold ? 'cancelled' : 'off' }}" style="cursor:pointer;background:none">{{ $v->is_sold ? 'Satıldı' : '—' }}</button>
             </form>
           </td>
           <td>

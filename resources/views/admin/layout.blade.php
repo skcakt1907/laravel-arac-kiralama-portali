@@ -22,6 +22,7 @@
       <a href="{{ route('admin.parts.index') }}" class="{{ str_starts_with($r, 'admin.parts') ? 'active' : '' }}">⚙ <span>Parçalar</span></a>
       <a href="{{ route('admin.categories.index') }}" class="{{ str_starts_with($r, 'admin.categories') ? 'active' : '' }}">▤ <span>Kategoriler</span></a>
       <a href="{{ route('admin.orders.index') }}" class="{{ str_starts_with($r, 'admin.orders') ? 'active' : '' }}">🧾 <span>Siparişler</span></a>
+      <a href="{{ route('admin.sell.index') }}" class="{{ str_starts_with($r, 'admin.sell') ? 'active' : '' }}">💰 <span>Sat Talepleri</span></a>
       <a href="{{ route('admin.posts.index') }}" class="{{ str_starts_with($r, 'admin.posts') ? 'active' : '' }}">✎ <span>Blog</span></a>
 
       <details class="side-group" {{ (str_starts_with($r, 'admin.settings') || str_starts_with($r, 'admin.account')) ? 'open' : '' }}>

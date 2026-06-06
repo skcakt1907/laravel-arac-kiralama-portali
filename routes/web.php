@@ -45,6 +45,16 @@ Route::get('/kiralama/{rental}', [\App\Http\Controllers\RentalController::class,
 Route::get('/blog', [\App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{post}', [\App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
 
+// Araç karşılaştırma
+Route::get('/karsilastir', [\App\Http\Controllers\CompareController::class, 'index'])->name('compare.index');
+Route::post('/karsilastir/{vehicle}', [\App\Http\Controllers\CompareController::class, 'add'])->name('compare.add');
+Route::delete('/karsilastir/{vehicle}', [\App\Http\Controllers\CompareController::class, 'remove'])->name('compare.remove');
+Route::post('/karsilastir-temizle', [\App\Http\Controllers\CompareController::class, 'clear'])->name('compare.clear');
+
+// Aracını sat
+Route::get('/aracini-sat', [\App\Http\Controllers\SellController::class, 'create'])->name('sell.create');
+Route::post('/aracini-sat', [\App\Http\Controllers\SellController::class, 'store'])->name('sell.store');
+
 // Üyelik
 Route::get('/uye/kayit', [\App\Http\Controllers\MemberAuthController::class, 'showRegister'])->name('member.register');
 Route::post('/uye/kayit', [\App\Http\Controllers\MemberAuthController::class, 'register'])->name('member.register.post');
@@ -117,6 +127,11 @@ Route::prefix('yonetim')->name('admin.')->group(function () {
         Route::get('kiralama/{rental}/duzenle', [\App\Http\Controllers\Admin\RentalAdminController::class, 'edit'])->name('rentals.edit');
         Route::put('kiralama/{rental}', [\App\Http\Controllers\Admin\RentalAdminController::class, 'update'])->name('rentals.update');
         Route::delete('kiralama/{rental}', [\App\Http\Controllers\Admin\RentalAdminController::class, 'destroy'])->name('rentals.destroy');
+
+        // Aracını sat talepleri
+        Route::get('sat-talepleri', [\App\Http\Controllers\Admin\SellRequestController::class, 'index'])->name('sell.index');
+        Route::patch('sat-talepleri/{sell}/durum', [\App\Http\Controllers\Admin\SellRequestController::class, 'toggle'])->name('sell.toggle');
+        Route::delete('sat-talepleri/{sell}', [\App\Http\Controllers\Admin\SellRequestController::class, 'destroy'])->name('sell.destroy');
 
         // Blog
         Route::get('blog', [\App\Http\Controllers\Admin\PostAdminController::class, 'index'])->name('posts.index');

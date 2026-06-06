@@ -1,5 +1,6 @@
 @php($locale = app()->getLocale())
 @php($cartCount = app(\App\Services\Cart::class)->count())
+@php($compareCount = count(session('compare', [])))
 <!DOCTYPE html>
 <html lang="{{ $locale }}" dir="{{ $locale === 'ar' ? 'rtl' : 'ltr' }}">
 <head>
@@ -37,6 +38,7 @@
       <a href="{{ route('member.login') }}">@lang('site.login')</a>
       <a href="{{ route('member.register') }}">@lang('site.register')</a>
     @endauth
+    <a href="{{ route('compare.index') }}">@lang('site.compare') ({{ $compareCount }})</a>
     <a href="{{ route('cart.index') }}">@lang('site.cart') ({{ $cartCount }})</a>
     <span style="display:flex;gap:4px">
       @foreach (['tr' => 'TR', 'en' => 'EN', 'ar' => 'AR'] as $code => $label)
@@ -59,7 +61,9 @@
               <div class="mega-title">@lang('site.col_eye')</div>
               <a href="{{ route('vehicles.index') }}">@lang('site.all_vehicles')<small>@lang('site.all_vehicles_sub')</small></a>
               <a href="{{ route('vehicles.index', ['sort' => 'new']) }}">@lang('site.newest')<small>@lang('site.newest_sub')</small></a>
-              <a href="{{ url('/#iletisim') }}">@lang('site.cta2')<small>@lang('site.contact_sub')</small></a>
+              <a href="{{ route('vehicles.index', ['sold' => 1]) }}">@lang('site.sold_cars')</a>
+              <a href="{{ route('compare.index') }}">@lang('site.compare')</a>
+              <a href="{{ route('sell.create') }}">@lang('site.nav_sell')</a>
             </div>
             <div>
               <div class="mega-title">@lang('site.brands')</div>
@@ -126,6 +130,8 @@
     <a href="{{ route('rentals.index') }}">@lang('site.nav_rentals')</a>
     <a href="{{ route('shop.index') }}">@lang('site.nav_parts')</a>
     <a href="{{ route('blog.index') }}">@lang('site.nav_blog')</a>
+    <a href="{{ route('sell.create') }}">@lang('site.nav_sell')</a>
+    <a href="{{ route('compare.index') }}">@lang('site.compare') ({{ $compareCount }})</a>
     <a href="{{ route('pages.about') }}">@lang('site.nav_about')</a>
     <a href="{{ route('pages.contact') }}">@lang('site.nav_contact')</a>
     <a href="{{ route('cart.index') }}">@lang('site.cart') ({{ $cartCount }})</a>

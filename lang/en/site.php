@@ -162,6 +162,34 @@ return [
     'save'          => 'Save',
     'welcome'       => 'Welcome',
 
+    // sold vehicles
+    'sold'           => 'Sold',
+    'available_cars' => 'Available Cars',
+    'sold_cars'      => 'Sold Cars',
+
+    // compare
+    'nav_compare'    => 'Compare',
+    'compare'        => 'Compare',
+    'compare_add'    => '+ Compare',
+    'compare_added'  => 'Vehicle added to comparison.',
+    'compare_full'   => 'You can compare up to 3 vehicles.',
+    'compare_title'  => 'Vehicle Comparison',
+    'compare_empty'  => 'Your comparison list is empty. Add vehicles via "Compare".',
+    'compare_clear'  => 'Clear List',
+
+    // sell your car
+    'nav_sell'   => 'Sell Your Car',
+    'sell_eye'   => 'Valuation',
+    'sell_title' => 'Sell Your Car',
+    'sell_sub'   => 'Fill in the form to sell your car to us or get a valuation; our team will contact you shortly.',
+    'sell_btn'   => 'Send Request',
+    'sell_sent'  => 'Your request has been received. Our team will contact you shortly.',
+    'ph_brand'   => 'Make',
+    'ph_model'   => 'Model',
+    'ph_year'    => 'Year',
+    'ph_km'      => 'Mileage',
+    'ph_photo'   => 'Vehicle Photo (optional)',
+
     // footer
     'rights' => 'All rights reserved.',
 ];

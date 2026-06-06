@@ -162,6 +162,34 @@ return [
     'save'          => 'Kaydet',
     'welcome'       => 'Hoş geldiniz',
 
+    // satılan araçlar
+    'sold'           => 'Satıldı',
+    'available_cars' => 'Mevcut Araçlar',
+    'sold_cars'      => 'Satılan Araçlar',
+
+    // karşılaştırma
+    'nav_compare'    => 'Karşılaştır',
+    'compare'        => 'Karşılaştır',
+    'compare_add'    => '+ Karşılaştır',
+    'compare_added'  => 'Araç karşılaştırmaya eklendi.',
+    'compare_full'   => 'En fazla 3 araç karşılaştırabilirsiniz.',
+    'compare_title'  => 'Araç Karşılaştırma',
+    'compare_empty'  => 'Karşılaştırma listeniz boş. Araç sayfalarından "Karşılaştır" ile ekleyin.',
+    'compare_clear'  => 'Listeyi Temizle',
+
+    // aracını sat
+    'nav_sell'   => 'Aracını Sat',
+    'sell_eye'   => 'Değerleme',
+    'sell_title' => 'Aracını Sat',
+    'sell_sub'   => 'Aracınızı bize satmak veya değerleme almak için formu doldurun; ekibimiz en kısa sürede sizinle iletişime geçsin.',
+    'sell_btn'   => 'Talebi Gönder',
+    'sell_sent'  => 'Talebiniz alındı. Ekibimiz en kısa sürede sizinle iletişime geçecek.',
+    'ph_brand'   => 'Marka',
+    'ph_model'   => 'Model',
+    'ph_year'    => 'Yıl',
+    'ph_km'      => 'Kilometre',
+    'ph_photo'   => 'Araç Fotoğrafı (opsiyonel)',
+
     // footer
     'rights' => 'Tüm hakları saklıdır.',
 ];

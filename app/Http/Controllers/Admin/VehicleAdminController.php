@@ -68,7 +68,7 @@ class VehicleAdminController extends Controller
     public function toggle(Request $request, Vehicle $vehicle)
     {
         $field = $request->input('field');
-        if (in_array($field, ['is_published', 'is_featured'], true)) {
+        if (in_array($field, ['is_published', 'is_featured', 'is_sold'], true)) {
             $vehicle->update([$field => ! $vehicle->$field]);
         }
 
@@ -90,6 +90,7 @@ class VehicleAdminController extends Controller
             'description'  => ['nullable', 'string'],
             'is_published' => ['nullable', 'boolean'],
             'is_featured'  => ['nullable', 'boolean'],
+            'is_sold'      => ['nullable', 'boolean'],
             'image'        => ['nullable', 'image', 'max:8192'],
         ]);
     }
@@ -98,6 +99,7 @@ class VehicleAdminController extends Controller
     {
         $data['is_published'] = $request->boolean('is_published');
         $data['is_featured']  = $request->boolean('is_featured');
+        $data['is_sold']      = $request->boolean('is_sold');
 
         if ($request->hasFile('image')) {
             if ($vehicle && $vehicle->cover_image && ! str_starts_with($vehicle->cover_image, 'http')) {
