@@ -175,7 +175,7 @@ section{padding:110px 0}
 .car-card:hover{transform:translateY(-7px);border-color:rgba(200,164,77,.55);box-shadow:0 26px 60px -28px rgba(200,164,77,.3)}
 .car-card:hover::before{opacity:1}
 .car-card svg{width:100%;height:auto;margin:6px 0 20px;opacity:.92}
-.car-thumb{width:100%;height:200px;object-fit:cover;margin:6px 0 20px;border:1px solid rgba(200,164,77,.12)}
+.car-thumb{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;margin:6px 0 20px;border:1px solid rgba(200,164,77,.12);background:#0e0c08}
 .car-brand{font-size:11px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase}
 .car-model{font-family:'Marcellus',serif;font-size:27px;letter-spacing:.05em;color:var(--champ);margin:7px 0 10px}
 .car-specs{font-size:12.5px;color:var(--muted);letter-spacing:.14em;margin-bottom:22px}
