@@ -16,6 +16,12 @@ a{color:inherit;text-decoration:none}
 .side nav a{display:flex;align-items:center;gap:10px;padding:12px 24px;color:var(--muted);font-size:13.5px;letter-spacing:.04em;border-inline-start:3px solid transparent;transition:.2s}
 .side nav a:hover{color:var(--text);background:rgba(255,255,255,.03)}
 .side nav a.active{color:var(--gold-l);border-inline-start-color:var(--gold);background:rgba(200,164,77,.07)}
+.side-group summary{display:flex;align-items:center;gap:10px;padding:12px 24px;color:var(--muted);font-size:13.5px;
+  letter-spacing:.04em;cursor:pointer;list-style:none;border-inline-start:3px solid transparent;transition:.2s}
+.side-group summary::-webkit-details-marker{display:none}
+.side-group summary:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.side-group[open] summary{color:var(--gold-l)}
+.side-group a{padding-inline-start:46px;font-size:12.5px}
 
 /* main */
 .main{flex:1;display:flex;flex-direction:column;min-width:0}

@@ -21,6 +21,13 @@
       <a href="{{ route('admin.parts.index') }}" class="{{ str_starts_with($r, 'admin.parts') ? 'active' : '' }}">⚙ <span>Parçalar</span></a>
       <a href="{{ route('admin.categories.index') }}" class="{{ str_starts_with($r, 'admin.categories') ? 'active' : '' }}">▤ <span>Kategoriler</span></a>
       <a href="{{ route('admin.orders.index') }}" class="{{ str_starts_with($r, 'admin.orders') ? 'active' : '' }}">🧾 <span>Siparişler</span></a>
+
+      <details class="side-group" {{ (str_starts_with($r, 'admin.settings') || str_starts_with($r, 'admin.account')) ? 'open' : '' }}>
+        <summary>⚙ <span>Site Ayarları</span></summary>
+        <a href="{{ route('admin.settings.edit') }}" class="{{ str_starts_with($r, 'admin.settings') ? 'active' : '' }}"><span>İçerik & İletişim</span></a>
+        <a href="{{ route('admin.account.edit') }}" class="{{ str_starts_with($r, 'admin.account') ? 'active' : '' }}"><span>Hesap · Şifre / E-posta</span></a>
+      </details>
+
       <a href="{{ url('/') }}" target="_blank">↗ <span>Siteyi Gör</span></a>
     </nav>
   </aside>

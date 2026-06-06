@@ -84,11 +84,11 @@
       <div class="eyebrow">@lang('site.about_eye')</div>
       <h2>@lang('site.about_title')</h2>
     </div>
-    <p class="about-text">@lang('site.about_text')</p>
+    <p class="about-text">{{ setting_l('about', __('site.about_text')) }}</p>
     <div class="stats">
-      <div class="stat"><b class="gold-grad">250+</b><span>@lang('site.stat1')</span></div>
-      <div class="stat"><b class="gold-grad">30+</b><span>@lang('site.stat2')</span></div>
-      <div class="stat"><b class="gold-grad">15</b><span>@lang('site.stat3')</span></div>
+      <div class="stat"><b class="gold-grad">{{ setting('stat_delivered', '250+') }}</b><span>@lang('site.stat1')</span></div>
+      <div class="stat"><b class="gold-grad">{{ setting('stat_brands', '30+') }}</b><span>@lang('site.stat2')</span></div>
+      <div class="stat"><b class="gold-grad">{{ setting('stat_years', '15') }}</b><span>@lang('site.stat3')</span></div>
     </div>
   </div>
 </section>
@@ -107,10 +107,21 @@
     <div class="contact-grid">
       <div class="c-info">
         <h3 class="serif">@lang('site.showroom')</h3>
-        <div class="c-line"><i>⌖</i><span>@lang('site.addr')</span></div>
-        <div class="c-line"><i>✆</i><span>+971 — — — — —</span></div>
-        <div class="c-line"><i>✉</i><span>info@ornek-kiralama.com</span></div>
-        <div class="c-line"><i>◷</i><span>@lang('site.hours')</span></div>
+        <div class="c-line"><i>⌖</i><span>{{ setting_l('address', __('site.addr')) }}</span></div>
+        <div class="c-line"><i>✆</i><span>{{ setting('phone', '+971 — — — — —') }}</span></div>
+        <div class="c-line"><i>✉</i><span>{{ setting('email', 'info@ornek-kiralama.com') }}</span></div>
+        <div class="c-line"><i>◷</i><span>{{ setting_l('hours', __('site.hours')) }}</span></div>
+        @if (setting('instagram') || setting('facebook') || setting('twitter') || setting('whatsapp'))
+          <div class="c-line" style="gap:18px;margin-top:8px">
+            @if (setting('whatsapp'))<a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', setting('whatsapp')) }}" target="_blank" style="color:var(--gold-l);text-decoration:none">WhatsApp</a>@endif
+            @if (setting('instagram'))<a href="{{ setting('instagram') }}" target="_blank" style="color:var(--gold-l);text-decoration:none">Instagram</a>@endif
+            @if (setting('facebook'))<a href="{{ setting('facebook') }}" target="_blank" style="color:var(--gold-l);text-decoration:none">Facebook</a>@endif
+            @if (setting('twitter'))<a href="{{ setting('twitter') }}" target="_blank" style="color:var(--gold-l);text-decoration:none">X</a>@endif
+          </div>
+        @endif
+        @if (setting('map_embed'))
+          <div style="margin-top:20px">{!! setting('map_embed') !!}</div>
+        @endif
       </div>
       <form method="POST" action="{{ route('contact.send') }}">
         @csrf

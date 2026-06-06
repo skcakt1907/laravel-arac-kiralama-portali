@@ -75,5 +75,14 @@ Route::prefix('yonetim')->name('admin.')->group(function () {
         Route::get('siparisler', [\App\Http\Controllers\Admin\OrderAdminController::class, 'index'])->name('orders.index');
         Route::get('siparisler/{order}', [\App\Http\Controllers\Admin\OrderAdminController::class, 'show'])->name('orders.show');
         Route::patch('siparisler/{order}/durum', [\App\Http\Controllers\Admin\OrderAdminController::class, 'updateStatus'])->name('orders.status');
+
+        // Site Ayarları — içerik
+        Route::get('ayarlar', [\App\Http\Controllers\Admin\SettingController::class, 'edit'])->name('settings.edit');
+        Route::put('ayarlar', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
+
+        // Site Ayarları — hesap
+        Route::get('hesap', [\App\Http\Controllers\Admin\AccountController::class, 'edit'])->name('account.edit');
+        Route::put('hesap/profil', [\App\Http\Controllers\Admin\AccountController::class, 'updateProfile'])->name('account.profile');
+        Route::put('hesap/parola', [\App\Http\Controllers\Admin\AccountController::class, 'updatePassword'])->name('account.password');
     });
 });
