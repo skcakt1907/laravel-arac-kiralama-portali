@@ -81,6 +81,15 @@ td img.thumb{width:60px;height:45px;object-fit:cover;border:1px solid var(--line
 .search{display:flex;gap:8px}
 .search input{background:#0d0b07;border:1px solid var(--line);color:var(--text);padding:9px 13px;border-radius:4px;min-width:240px}
 .muted{color:var(--muted)}
+
+/* tabs */
+.tabs{display:flex;gap:4px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.tab-btn{padding:11px 24px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);
+  cursor:pointer;font:inherit;font-size:13px;letter-spacing:.12em;text-transform:uppercase;transition:.2s;margin-bottom:-1px}
+.tab-btn:hover{color:var(--text)}
+.tab-btn.active{color:var(--gold-l);border-bottom-color:var(--gold)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
 .pagination{display:flex;gap:6px;list-style:none;padding:18px 0 0;flex-wrap:wrap}
 .pagination a,.pagination span{display:inline-flex;min-width:36px;height:36px;align-items:center;justify-content:center;
   padding:0 10px;border:1px solid var(--line);border-radius:4px;font-size:13px;color:var(--text)}
