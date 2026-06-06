@@ -23,7 +23,7 @@
   </svg>
 
   <div class="cta-row">
-    <a href="{{ url('/#koleksiyon') }}" class="btn solid">@lang('site.cta1')</a>
+    <a href="{{ route('vehicles.index') }}" class="btn solid">@lang('site.cta1')</a>
     <a href="{{ url('/#iletisim') }}" class="btn ghost">@lang('site.cta2')</a>
   </div>
 </header>
@@ -45,18 +45,12 @@
       <span class="diamond">✦</span>
     </div>
     <div class="cars">
-      @foreach ($cars as $car)
-        <div class="car-card">
-          <div class="car-brand">{{ $car['brand'] }}</div>
-          <div class="car-model">{{ $car['model'] }}</div>
-          <svg viewBox="0 0 600 190" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="gf{{ $loop->index }}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9d6a0" stop-opacity=".85"/><stop offset="1" stop-color="#7c6228" stop-opacity=".55"/></linearGradient></defs><path fill="url(#gf{{ $loop->index }})" d="M25 132 C60 110 100 96 150 88 C210 70 290 62 360 70 C420 76 480 92 535 110 C555 116 560 124 552 134 L540 138 L505 138 A38 38 0 0 0 429 138 L215 138 A38 38 0 0 0 139 138 L45 138 C30 138 20 136 25 132 Z"/><circle cx="177" cy="138" r="27" fill="#0b0a08" stroke="#c8a44d" stroke-width="2"/><circle cx="177" cy="138" r="10" fill="none" stroke="#c8a44d" stroke-width="1.4"/><circle cx="467" cy="138" r="27" fill="#0b0a08" stroke="#c8a44d" stroke-width="2"/><circle cx="467" cy="138" r="10" fill="none" stroke="#c8a44d" stroke-width="1.4"/><path d="M30 172 L570 172" stroke="#c8a44d" stroke-width="1" opacity=".25"/></svg>
-          <div class="car-specs">{{ $car['specs'] }}</div>
-          <div class="car-foot">
-            <span class="poa">✦ @lang('site.poa')</span>
-            <a class="mini-btn" href="{{ url('/#iletisim') }}">@lang('site.inq')</a>
-          </div>
-        </div>
+      @foreach ($cars as $vehicle)
+        @include('partials.vehicle-card', ['vehicle' => $vehicle])
       @endforeach
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="{{ route('vehicles.index') }}" class="btn ghost">@lang('site.cta1')</a>
     </div>
   </div>
 </section>

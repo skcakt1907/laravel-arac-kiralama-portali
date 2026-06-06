@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        // NOT: Faz 2'de bu veriler F1RST Motors'tan çekilip DB'den gelecek.
-        // Şimdilik şablon yerleşimi için örnek (placeholder) veriler.
         $brands = ['Rolls-Royce', 'Bentley', 'Ferrari', 'Lamborghini', 'McLaren', 'Bugatti', 'Maybach', 'Porsche'];
 
-        $cars = [
-            ['brand' => 'ROLLS-ROYCE',      'model' => 'Phantom VIII',   'specs' => '2024 · 1.200 km · V12 6.75L'],
-            ['brand' => 'FERRARI',          'model' => 'SF90 Stradale',  'specs' => '2023 · 4.500 km · V8 Hybrid'],
-            ['brand' => 'LAMBORGHINI',      'model' => 'Revuelto',       'specs' => '2024 · 800 km · V12 Hybrid'],
-            ['brand' => 'BENTLEY',          'model' => 'Continental GT', 'specs' => '2023 · 6.100 km · W12 6.0L'],
-            ['brand' => 'McLAREN',          'model' => '765LT Spider',   'specs' => '2022 · 3.900 km · V8 4.0L'],
-            ['brand' => 'MERCEDES-MAYBACH', 'model' => 'S 680 4MATIC',   'specs' => '2024 · 2.300 km · V12 6.0L'],
-        ];
+        // Ana sayfa vitrini: öne çıkan araçlar (DB'den). Yoksa son eklenenler.
+        $cars = Vehicle::published()
+            ->where('is_featured', true)
+            ->orderBy('sort_order')
+            ->take(6)
+            ->get();
 
+        if ($cars->isEmpty()) {
+            $cars = Vehicle::published()->latest()->take(6)->get();
+        }
+
+        // NOT: Parçalar Faz 3'te DB'den gelecek; şimdilik örnek.
         $parts = [
             ['name' => 'Karbon Fren Diski Seti', 'car' => 'FERRARI · 488 / F8',     'price' => '$4.850'],
             ['name' => 'LED Far Ünitesi',        'car' => 'ROLLS-ROYCE · GHOST',    'price' => '$7.200'],
@@ -36,6 +38,8 @@ class HomeController extends Controller
         $request->validate([
             'name'    => ['required', 'string', 'max:120'],
             'email'   => ['required', 'email', 'max:160'],
+            'phone'   => ['nullable', 'string', 'max:40'],
+            'vehicle' => ['nullable', 'string', 'max:160'],
             'message' => ['required', 'string', 'max:3000'],
         ]);
 

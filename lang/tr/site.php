@@ -51,6 +51,22 @@ return [
     'send'      => 'Gönder',
     'sent_ok'   => 'Mesajınız alındı. En kısa sürede size dönüş yapacağız.',
 
+    // araçlar / detay
+    'all'          => 'Tümü',
+    'no_vehicles'  => 'Bu kritere uygun araç bulunamadı.',
+    'specs'        => 'Teknik Özellikler',
+    'spec_year'         => 'Model Yılı',
+    'spec_mileage'      => 'Kilometre',
+    'spec_engine'       => 'Motor',
+    'spec_fuel'         => 'Yakıt',
+    'spec_transmission' => 'Vites',
+    'spec_body'         => 'Kasa Tipi',
+    'spec_color'        => 'Renk',
+    'images_soon'  => 'Görseller yakında eklenecek.',
+    'related'      => 'Benzer Araçlar',
+    'ph_phone'     => 'Telefon (opsiyonel)',
+    'inq_prefill'  => ':car ile ilgileniyorum. Lütfen benimle iletişime geçin.',
+
     // footer
     'rights' => 'Tüm hakları saklıdır.',
 ];

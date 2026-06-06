@@ -26,7 +26,7 @@
 <nav>
   <div class="container nav-grid">
     <div class="nav-links left">
-      <a href="{{ url('/#koleksiyon') }}">@lang('site.nav_collection')</a>
+      <a href="{{ route('vehicles.index') }}">@lang('site.nav_collection')</a>
       <a href="{{ url('/#parca') }}">@lang('site.nav_parts')</a>
     </div>
     <a class="logo" href="{{ url('/') }}">

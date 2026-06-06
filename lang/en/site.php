@@ -51,6 +51,22 @@ return [
     'send'      => 'Send',
     'sent_ok'   => 'Your message has been received. We will get back to you shortly.',
 
+    // vehicles / detail
+    'all'          => 'All',
+    'no_vehicles'  => 'No vehicles match this selection.',
+    'specs'        => 'Specifications',
+    'spec_year'         => 'Model Year',
+    'spec_mileage'      => 'Mileage',
+    'spec_engine'       => 'Engine',
+    'spec_fuel'         => 'Fuel',
+    'spec_transmission' => 'Transmission',
+    'spec_body'         => 'Body Type',
+    'spec_color'        => 'Colour',
+    'images_soon'  => 'Images coming soon.',
+    'related'      => 'Similar Vehicles',
+    'ph_phone'     => 'Phone (optional)',
+    'inq_prefill'  => 'I am interested in the :car. Please contact me.',
+
     // footer
     'rights' => 'All rights reserved.',
 ];
