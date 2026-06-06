@@ -30,6 +30,23 @@ class Vehicle extends Model
         return $query->where('is_published', true);
     }
 
+    public function getHasImageAttribute(): bool
+    {
+        return ! empty($this->cover_image);
+    }
+
+    /** Kapak görseli: harici URL ise olduğu gibi, değilse storage yolu */
+    public function getImageUrlAttribute(): ?string
+    {
+        if (empty($this->cover_image)) {
+            return null;
+        }
+
+        return str_starts_with($this->cover_image, 'http')
+            ? $this->cover_image
+            : asset('storage/' . $this->cover_image);
+    }
+
     /** "2024 · 1.200 km · V12" gibi tek satır özet */
     public function getSpecsLineAttribute(): string
     {
