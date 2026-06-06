@@ -45,8 +45,17 @@
               <div class="mega-title">@lang('site.brands')</div>
               <div class="brand-grid">
                 @foreach ($navBrands as $b)
+                  @php($logo = 'img/brands/' . \Illuminate\Support\Str::slug($b->brand) . '.png')
                   <a class="brand-link" href="{{ route('vehicles.index', ['brand' => $b->brand]) }}">
-                    <span>{{ $b->brand }}</span><span class="cnt">{{ $b->c }}</span>
+                    <span class="bl-name">
+                      @if (file_exists(public_path($logo)))
+                        <img class="brand-logo" src="{{ asset($logo) }}" alt="{{ $b->brand }}" loading="lazy">
+                      @else
+                        <span class="brand-logo mono">{{ mb_substr($b->brand, 0, 1) }}</span>
+                      @endif
+                      {{ $b->brand }}
+                    </span>
+                    <span class="cnt">{{ $b->c }}</span>
                   </a>
                 @endforeach
               </div>

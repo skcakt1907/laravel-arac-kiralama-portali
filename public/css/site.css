@@ -70,7 +70,10 @@ nav{
   opacity:0;visibility:hidden;transform:translateY(10px);pointer-events:none;
   transition:opacity .26s,transform .26s,visibility .26s;z-index:60;padding:40px 0;
 }
-.nav-item:hover .mega{opacity:1;visibility:visible;transform:none;pointer-events:auto}
+/* görünmez köprü: tetikleyici ile panel arasındaki boşlukta hover kopmasın */
+.mega::before{content:"";position:absolute;left:0;right:0;top:-28px;height:28px;background:transparent}
+.nav-item:hover .mega,
+.mega:hover{opacity:1;visibility:visible;transform:none;pointer-events:auto}
 .mega-inner{width:min(1200px,92%);margin:0 auto;display:grid;grid-template-columns:250px 1fr;gap:50px}
 .mega-title{font-size:10.5px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
 .mega-quick{border-inline-end:1px solid var(--line);padding-inline-end:40px;display:flex;flex-direction:column;gap:2px}
@@ -88,6 +91,14 @@ nav{
 }
 .brand-link:hover{color:var(--gold-l);padding-inline-start:6px}
 .brand-link .cnt{color:var(--muted);font-size:11px;font-family:'Marcellus',serif}
+.bl-name{display:flex;align-items:center;gap:11px}
+.brand-logo{width:30px;height:22px;object-fit:contain;filter:brightness(0) invert(1);opacity:.68;transition:opacity .25s}
+.brand-link:hover .brand-logo{opacity:1}
+.brand-logo.mono{
+  display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;
+  border:1px solid var(--line);border-radius:50%;color:var(--gold);font-size:11px;
+  font-family:'Marcellus',serif;filter:none;opacity:.9;
+}
 .mega-sm .mega-inner{grid-template-columns:1fr}
 .mega-sm .brand-grid{grid-template-columns:repeat(3,1fr)}
 
