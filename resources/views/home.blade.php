@@ -104,6 +104,8 @@
       <div class="flash">@lang('site.sent_ok')</div>
     @endif
 
+    @include('partials.contact-cta')
+
     <div class="contact-grid">
       <div class="c-info">
         <h3 class="serif">@lang('site.showroom')</h3>
@@ -120,7 +122,7 @@
           </div>
         @endif
         @if (setting('map_embed'))
-          <div style="margin-top:20px">{!! setting('map_embed') !!}</div>
+          <div style="margin-top:20px">{!! embed_html(setting('map_embed')) !!}</div>
         @endif
       </div>
       <form method="POST" action="{{ route('contact.send') }}">

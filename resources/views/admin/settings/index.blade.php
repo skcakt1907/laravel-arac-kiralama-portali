@@ -2,8 +2,36 @@
 @section('title', 'Site Ayarları')
 
 @section('content')
-<form class="form" method="POST" action="{{ route('admin.settings.update') }}" style="max-width:980px">
+<form class="form" method="POST" action="{{ route('admin.settings.update') }}" enctype="multipart/form-data" style="max-width:980px">
   @csrf @method('PUT')
+
+  {{-- Logo & Marka --}}
+  <h3 style="color:var(--gold-l);font-size:15px;margin-bottom:16px">Logo & Marka Görselleri</h3>
+  <div class="grid">
+    <div class="field">
+      <label>Site Logosu (PNG/SVG/WEBP · şeffaf önerilir)</label>
+      @if (!empty($s['logo']))
+        <div style="background:#000;border:1px solid var(--line);border-radius:5px;padding:14px;margin-bottom:10px;text-align:center">
+          <img src="{{ asset('storage/' . $s['logo']) }}" alt="logo" style="max-height:60px;max-width:100%">
+        </div>
+        <label class="check" style="margin-bottom:8px"><input type="checkbox" name="remove_logo" value="1"> Logoyu kaldır (yazılı markaya dön)</label>
+      @endif
+      <input type="file" name="logo" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+    </div>
+    <div class="field">
+      <label>Favicon (sekme ikonu · 32×32 / 64×64 PNG)</label>
+      @if (!empty($s['favicon']))
+        <div style="background:#000;border:1px solid var(--line);border-radius:5px;padding:14px;margin-bottom:10px;text-align:center">
+          <img src="{{ asset('storage/' . $s['favicon']) }}" alt="favicon" style="height:48px;width:48px;object-fit:contain">
+        </div>
+        <label class="check" style="margin-bottom:8px"><input type="checkbox" name="remove_favicon" value="1"> Favicon'u kaldır</label>
+      @endif
+      <input type="file" name="favicon" accept="image/png,image/x-icon,image/webp,image/svg+xml">
+    </div>
+  </div>
+  <p class="muted" style="font-size:12px;margin:-4px 0 8px">Logo yüklenmezse üst menüde yazılı “{{ config('app.name') }}” markası gösterilir.</p>
+
+  <hr style="border-color:var(--line);margin:24px 0">
 
   {{-- Dile bağlı içerik: TR / EN / AR sekmeleri --}}
   <h3 style="color:var(--gold-l);font-size:15px;margin-bottom:16px">İçerik (Dile Göre)</h3>

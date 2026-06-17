@@ -10,7 +10,7 @@ use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::post('/contact', [HomeController::class, 'contact'])->name('contact.send');
+Route::post('/contact', [HomeController::class, 'contact'])->middleware('throttle:5,1')->name('contact.send');
 
 // Araçlar (vitrin, fiyatsız)
 Route::get('/araclar', [VehicleController::class, 'index'])->name('vehicles.index');
@@ -37,6 +37,9 @@ Route::match(['get', 'post'], '/weobank/callback', [PaymentController::class, 'c
 Route::get('/hakkimizda', [\App\Http\Controllers\PageController::class, 'about'])->name('pages.about');
 Route::get('/iletisim', [\App\Http\Controllers\PageController::class, 'contact'])->name('pages.contact');
 
+// Yasal / politika sayfaları (sözleşmeler) — slug controller'da whitelist'li
+Route::get('/politikalar/{slug}', [\App\Http\Controllers\PolicyController::class, 'show'])->name('policy.show');
+
 // Araç kiralama
 Route::get('/kiralama', [\App\Http\Controllers\RentalController::class, 'index'])->name('rentals.index');
 Route::get('/kiralama/{rental}', [\App\Http\Controllers\RentalController::class, 'show'])->name('rentals.show');
@@ -47,13 +50,15 @@ Route::get('/blog/{post}', [\App\Http\Controllers\BlogController::class, 'show']
 
 // Araç karşılaştırma
 Route::get('/karsilastir', [\App\Http\Controllers\CompareController::class, 'index'])->name('compare.index');
+Route::post('/karsilastir-ekle', [\App\Http\Controllers\CompareController::class, 'store'])->name('compare.store');
+Route::post('/karsilastir/{vehicle}/degistir', [\App\Http\Controllers\CompareController::class, 'swap'])->name('compare.swap');
 Route::post('/karsilastir/{vehicle}', [\App\Http\Controllers\CompareController::class, 'add'])->name('compare.add');
 Route::delete('/karsilastir/{vehicle}', [\App\Http\Controllers\CompareController::class, 'remove'])->name('compare.remove');
 Route::post('/karsilastir-temizle', [\App\Http\Controllers\CompareController::class, 'clear'])->name('compare.clear');
 
 // Aracını sat
 Route::get('/aracini-sat', [\App\Http\Controllers\SellController::class, 'create'])->name('sell.create');
-Route::post('/aracini-sat', [\App\Http\Controllers\SellController::class, 'store'])->name('sell.store');
+Route::post('/aracini-sat', [\App\Http\Controllers\SellController::class, 'store'])->middleware('throttle:5,1')->name('sell.store');
 
 // Üyelik
 Route::get('/uye/kayit', [\App\Http\Controllers\MemberAuthController::class, 'showRegister'])->name('member.register');
@@ -82,6 +87,9 @@ Route::prefix('yonetim')->name('admin.')->group(function () {
 
     Route::middleware('admin')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+
+        // Müşteriler / CRM
+        Route::get('musteriler', [\App\Http\Controllers\Admin\CrmController::class, 'index'])->name('crm.index');
 
         // Araçlar
         Route::get('araclar', [\App\Http\Controllers\Admin\VehicleAdminController::class, 'index'])->name('vehicles.index');

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yönetim Girişi · Demirbey</title>
+@if (setting('favicon'))<link rel="icon" href="{{ asset('storage/' . setting('favicon')) }}">@endif
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
@@ -12,6 +13,9 @@
   <form class="login-box" method="POST" action="{{ route('admin.login.post') }}">
     @csrf
     <div class="lg">
+      @if (setting('logo'))
+        <img src="{{ asset('storage/' . setting('logo')) }}" alt="logo" style="max-height:54px;max-width:200px;margin-bottom:8px">
+      @endif
       <b>DEMİRBEY</b>
       <small>Yönetim Paneli</small>
     </div>

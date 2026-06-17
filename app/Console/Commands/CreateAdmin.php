@@ -28,8 +28,10 @@ class CreateAdmin extends Command
 
         $user = User::updateOrCreate(
             ['email' => $email],
-            ['name' => $name, 'password' => Hash::make($password), 'is_admin' => true]
+            ['name' => $name, 'password' => Hash::make($password)]
         );
+        // is_admin fillable dışında → güvenilir bağlamda forceFill ile ata
+        $user->forceFill(['is_admin' => true])->save();
 
         $this->info("Yönetici hazır: {$user->email}");
 

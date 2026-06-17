@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('title', __('site.compare_title'))
 
+@php
+  $grouped = $allVehicles->groupBy('brand');
+  $canAdd  = $vehicles->count() < $max;
+@endphp
+
 @section('content')
 <section>
   <div class="container">
@@ -10,42 +15,82 @@
       <span class="diamond">✦</span>
     </div>
 
+    @if (session('compare_msg'))
+      <div class="flash">{{ session('compare_msg') }}</div>
+    @endif
+
+    {{-- Araç seçici (boşken veya yer varken) --}}
+    @if ($canAdd)
+      <form method="POST" action="{{ route('compare.store') }}" class="cmp-addbar">@csrf
+        <span class="cmp-addlabel">＋ @lang('site.c_add')</span>
+        <select name="vehicle_id" onchange="this.form.submit()" class="cmp-select">
+          <option value="">@lang('site.c_pick')</option>
+          @foreach ($grouped as $brand => $list)
+            <optgroup label="{{ $brand }}">
+              @foreach ($list as $opt)
+                <option value="{{ $opt->id }}">{{ $opt->brand }} {{ $opt->model }}</option>
+              @endforeach
+            </optgroup>
+          @endforeach
+        </select>
+        <span class="muted" style="font-size:12px">{{ $vehicles->count() }} / {{ $max }}</span>
+      </form>
+    @endif
+
     @if ($vehicles->isEmpty())
-      <p class="about-text">@lang('site.compare_empty')</p>
-      <div style="text-align:center;margin-top:24px"><a href="{{ route('vehicles.index') }}" class="btn ghost">@lang('site.nav_collection')</a></div>
+      <p class="about-text" style="text-align:center;margin-top:10px">@lang('site.compare_empty')</p>
     @else
+      @php($n = $vehicles->count())
       <div style="overflow-x:auto">
-        <table class="compare-table">
-          <tr>
-            <th class="rowlabel"></th>
-            @foreach ($vehicles as $v)
-              <th>
-                @if ($v->has_image)<img src="{{ $v->image_url }}" alt="" style="width:100%;max-width:220px;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);display:block;margin-bottom:10px">@endif
-                {{ $v->brand }} {{ $v->model }}
-                <form method="POST" action="{{ route('compare.remove', $v) }}" style="margin-top:8px">@csrf @method('DELETE')
-                  <button class="poa" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px">✕ @lang('site.remove')</button>
+        {{-- div-grid (tablo değil) — form'lar hücre içinde sorunsuz çalışsın --}}
+        <div class="compare-table cmp-grid" style="grid-template-columns:160px repeat({{ $n }}, minmax(210px,1fr))">
+
+          {{-- 1) Başlık: görsel + ad + Değiştir + kaldır --}}
+          <div class="cmp-cell label head"></div>
+          @foreach ($vehicles as $v)
+            <div class="cmp-cell head">
+              @if ($v->has_image)
+                <img class="cmp-img" src="{{ $v->image_url }}" alt="{{ $v->brand }} {{ $v->model }}">
+              @else
+                <div class="cmp-noimg">{{ $v->brand }}</div>
+              @endif
+              <div class="cmp-name">{{ $v->brand }} {{ $v->model }}</div>
+              <div class="cmp-actions">
+                <form method="POST" action="{{ route('compare.swap', $v) }}">@csrf
+                  <select name="new_id" onchange="this.form.submit()" class="cmp-select sm" title="@lang('site.c_change')">
+                    @foreach ($grouped as $brand => $list)
+                      <optgroup label="{{ $brand }}">
+                        @foreach ($list as $opt)
+                          <option value="{{ $opt->id }}" {{ $opt->id === $v->id ? 'selected' : '' }}>{{ $opt->brand }} {{ $opt->model }}</option>
+                        @endforeach
+                      </optgroup>
+                    @endforeach
+                  </select>
                 </form>
-              </th>
-            @endforeach
-          </tr>
+                <form method="POST" action="{{ route('compare.remove', $v) }}">@csrf @method('DELETE')
+                  <button class="cmp-x" title="@lang('site.remove')">✕</button>
+                </form>
+              </div>
+            </div>
+          @endforeach
+
+          {{-- 2) Özellik satırları --}}
           @foreach ([
             'spec_year' => 'year', 'spec_mileage' => 'mileage_km', 'spec_engine' => 'engine',
             'spec_fuel' => 'fuel', 'spec_transmission' => 'transmission', 'spec_body' => 'body_type', 'spec_color' => 'color',
           ] as $label => $field)
-            <tr>
-              <td class="rowlabel">@lang('site.' . $label)</td>
-              @foreach ($vehicles as $v)
-                <td>{{ $field === 'mileage_km' ? ($v->mileage_km ? number_format($v->mileage_km, 0, ',', '.') . ' km' : '—') : ($v->$field ?: '—') }}</td>
-              @endforeach
-            </tr>
-          @endforeach
-          <tr>
-            <td class="rowlabel"></td>
+            <div class="cmp-cell label">@lang('site.' . $label)</div>
             @foreach ($vehicles as $v)
-              <td><a href="{{ route('vehicles.show', $v) }}" class="mini-btn">@lang('site.inq')</a></td>
+              <div class="cmp-cell">{{ $field === 'mileage_km' ? ($v->mileage_km ? number_format($v->mileage_km, 0, ',', '.') . ' km' : '—') : ($v->$field ?: '—') }}</div>
             @endforeach
-          </tr>
-        </table>
+          @endforeach
+
+          {{-- 3) İncele --}}
+          <div class="cmp-cell label"></div>
+          @foreach ($vehicles as $v)
+            <div class="cmp-cell"><a href="{{ route('vehicles.show', $v) }}" class="mini-btn">@lang('site.inq')</a></div>
+          @endforeach
+        </div>
       </div>
 
       <div style="text-align:center;margin-top:30px">

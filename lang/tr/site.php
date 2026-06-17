@@ -192,4 +192,32 @@ return [
 
     // footer
     'rights' => 'Tüm hakları saklıdır.',
+
+    // yasal / footer linkleri
+    'legal'        => 'Yasal',
+    'f_privacy'    => 'Gizlilik Politikası',
+    'f_distance'   => 'Mesafeli Satış Sözleşmesi',
+    'f_refund'     => 'İptal ve İade',
+    'f_delivery'   => 'Teslimat',
+    'f_cookies'    => 'Çerez Politikası',
+    'f_terms'      => 'Kullanım Koşulları',
+
+    // checkout onay kutusu
+    'consent_and'      => 've',
+    'consent_read'     => '— okudum ve onaylıyorum.',
+    'consent_required' => 'Devam etmek için sözleşmeleri onaylamanız gerekir.',
+
+    // whatsapp
+    'wa_label' => "WhatsApp'tan yazın",
+    'wa_text'  => 'Merhaba, Demirbey Holding hakkında bilgi almak istiyorum.',
+
+    // hızlı iletişim kartları
+    'call_us'  => 'Bizi Arayın',
+    'wa_line'  => 'WhatsApp Hattımız',
+    'email_us' => 'E-posta',
+
+    // karşılaştırma seçici
+    'c_add'    => 'Araç Ekle',
+    'c_pick'   => 'Karşılaştırılacak araç seçin…',
+    'c_change' => 'Değiştir',
 ];

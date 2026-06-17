@@ -27,6 +27,19 @@
         <textarea name="address" placeholder="@lang('site.ph_address')" required>{{ old('address') }}</textarea>
         @error('address')<div class="field-err">{{ $message }}</div>@enderror
         <textarea name="note" placeholder="@lang('site.ph_note')">{{ old('note') }}</textarea>
+
+        <label class="consent">
+          <input type="checkbox" name="agree" value="1" {{ old('agree') ? 'checked' : '' }}>
+          <span>
+            <a href="{{ route('policy.show', 'mesafeli-satis') }}" target="_blank">@lang('site.f_distance')</a>,
+            <a href="{{ route('policy.show', 'iptal-iade') }}" target="_blank">@lang('site.f_refund')</a>
+            @lang('site.consent_and')
+            <a href="{{ route('policy.show', 'gizlilik') }}" target="_blank">@lang('site.f_privacy')</a>
+            @lang('site.consent_read')
+          </span>
+        </label>
+        @error('agree')<div class="field-err">{{ $message }}</div>@enderror
+
         <button class="btn solid" style="border:none;cursor:pointer">@lang('site.place_order')</button>
       </form>
 

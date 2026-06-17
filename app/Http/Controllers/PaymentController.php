@@ -7,8 +7,22 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
+    /**
+     * Sipariş sahipliği kontrolü (IDOR koruması).
+     * Üyeye bağlı siparişler yalnızca o üyeye gösterilir; misafir siparişlerinde
+     * rastgele order_no (DMB-XXXXXXXX) yetenek anahtarı görevi görür.
+     */
+    private function guardOwnership(Order $order): void
+    {
+        if ($order->user_id && (auth()->guest() || auth()->id() !== $order->user_id)) {
+            abort(404);
+        }
+    }
+
     public function show(Order $order)
     {
+        $this->guardOwnership($order);
+
         // WeoBank yapılandırılmış mı? (.env -> WEOBANK_* )
         $configured = (bool) config('services.weobank.api_key');
 
@@ -24,6 +38,8 @@ class PaymentController extends Controller
      */
     public function pay(Request $request, Order $order)
     {
+        $this->guardOwnership($order);
+
         if ($order->status === Order::STATUS_PAID) {
             return redirect()->route('payment.show', $order);
         }

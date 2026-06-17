@@ -56,6 +56,7 @@ nav{
 .logo{text-align:center;text-decoration:none;display:block}
 .logo .mark{font-size:26px;letter-spacing:.32em;color:var(--champ)}
 .logo .sub{font-size:9px;letter-spacing:.52em;color:var(--gold);margin-top:3px;text-transform:uppercase}
+.logo .logo-img{max-height:54px;max-width:220px;width:auto;display:block;margin:0 auto;object-fit:contain}
 
 /* ── mega menu ── */
 .nav-item{position:static;display:flex;align-items:center}
@@ -131,6 +132,7 @@ nav{
 .btn{
   display:inline-block;padding:15px 38px;font-size:12px;letter-spacing:.28em;
   text-transform:uppercase;text-decoration:none;transition:.35s;border:1px solid var(--gold);
+  background:transparent;color:var(--gold-l);font-family:inherit;cursor:pointer;
 }
 .btn.solid{background:linear-gradient(120deg,#a9883c,#e9d6a0 50%,#c8a44d);color:#15120a;font-weight:500}
 .btn.solid:hover{box-shadow:0 0 34px rgba(200,164,77,.45);transform:translateY(-2px)}
@@ -183,6 +185,35 @@ section{padding:110px 0}
 .compare-table th,.compare-table td{border:1px solid var(--line);padding:14px 16px;text-align:start;font-size:14px}
 .compare-table th{background:var(--bg2);color:var(--gold);font-family:'Marcellus',serif;letter-spacing:.04em}
 .compare-table .rowlabel{color:var(--muted);font-size:12px;letter-spacing:.1em;text-transform:uppercase;width:160px}
+.compare-table th{vertical-align:top;min-width:230px}
+.compare-table td{vertical-align:middle;text-align:center}
+.compare-table td.rowlabel{text-align:start}
+
+/* karşılaştırma — Honda tarzı seçici */
+.cmp-addbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:center;
+  margin:8px 0 6px;padding:14px 18px;border:1px dashed var(--line);border-radius:8px;background:rgba(255,255,255,.02)}
+.cmp-addlabel{color:var(--gold-l);letter-spacing:.06em;font-size:14px}
+.cmp-select{background:#0d0b07;border:1px solid var(--line);color:var(--text);padding:9px 12px;border-radius:5px;
+  font:inherit;font-size:13px;max-width:260px;cursor:pointer}
+.cmp-select:focus{outline:none;border-color:var(--gold)}
+.cmp-select.sm{font-size:12px;padding:6px 8px;max-width:160px}
+.cmp-select optgroup{color:var(--gold)} .cmp-select option{color:#111}
+.cmp-head{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
+.cmp-head img{width:100%;max-width:210px;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);background:#000}
+.cmp-noimg{width:100%;max-width:210px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);color:var(--muted);background:#000;font-size:13px;letter-spacing:.2em}
+.cmp-name{font-family:'Marcellus',serif;font-size:18px;color:var(--champ);letter-spacing:.03em}
+.cmp-actions{display:flex;align-items:center;gap:8px;justify-content:center}
+.cmp-x{background:none;border:1px solid var(--line);color:var(--muted);width:30px;height:30px;border-radius:5px;
+  cursor:pointer;font-size:12px;transition:.2s;flex-shrink:0}
+.cmp-x:hover{border-color:var(--danger,#9c3b3b);color:#e0a0a0}
+.cmp-grid{display:grid;border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:18px;min-width:560px}
+.cmp-grid .cmp-cell{border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:14px 16px;font-size:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;color:var(--text)}
+.cmp-grid .cmp-cell.label{align-items:flex-start;text-align:start;color:var(--muted);font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;background:var(--bg2)}
+.cmp-grid .cmp-cell.head{background:var(--bg2);padding:18px 14px}
+.cmp-img{width:100%;max-width:200px;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);background:#000}
 .car-brand{font-size:11px;letter-spacing:.42em;color:var(--gold);text-transform:uppercase}
 .car-model{font-family:'Marcellus',serif;font-size:27px;letter-spacing:.05em;color:var(--champ);margin:7px 0 10px}
 .car-specs{font-size:12.5px;color:var(--muted);letter-spacing:.14em;margin-bottom:22px}
@@ -257,6 +288,46 @@ footer{
   font-size:11px;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;
 }
 footer .f-logo{font-family:'Marcellus',serif;font-size:18px;letter-spacing:.3em;color:var(--gold);margin-bottom:14px}
+footer .f-legal{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-bottom:18px}
+footer .f-legal a{color:var(--muted);transition:.2s}
+footer .f-legal a:hover{color:var(--gold-l)}
+
+/* ── politika / sözleşme sayfaları ── */
+.policy-note{text-align:center;color:var(--muted);font-size:12px;letter-spacing:.04em;margin:-6px 0 34px;text-transform:none}
+.policy{max-width:780px;margin:0 auto}
+.policy h3{font-family:'Marcellus',serif;color:var(--gold-l);font-size:18px;letter-spacing:.04em;margin:26px 0 8px}
+.policy p{color:var(--text);opacity:.85;line-height:1.85;font-size:15px;margin-bottom:6px}
+
+/* ── checkout onay kutusu ── */
+.consent{display:flex;gap:10px;align-items:flex-start;margin:14px 0 4px;font-size:13px;line-height:1.6;color:var(--muted);cursor:pointer}
+.consent input{margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--gold)}
+.consent a{color:var(--gold-l);text-decoration:underline}
+.consent a:hover{color:var(--gold)}
+
+/* ── sabit WhatsApp butonu ── */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:90;width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;background:#25d366;color:#fff;
+  box-shadow:0 6px 22px rgba(0,0,0,.35);transition:transform .2s,box-shadow .2s;animation:waPulse 2.4s infinite}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 8px 28px rgba(37,211,102,.5)}
+html[dir="rtl"] .wa-float{right:auto;left:22px}
+@keyframes waPulse{0%{box-shadow:0 6px 22px rgba(0,0,0,.35),0 0 0 0 rgba(37,211,102,.45)}
+  70%{box-shadow:0 6px 22px rgba(0,0,0,.35),0 0 0 14px rgba(37,211,102,0)}
+  100%{box-shadow:0 6px 22px rgba(0,0,0,.35),0 0 0 0 rgba(37,211,102,0)}}
+@media(max-width:600px){.wa-float{width:50px;height:50px;right:16px;bottom:16px}}
+
+/* ── Bize Ulaşın hızlı iletişim kartları ── */
+.contact-cta{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 34px}
+.contact-cta .cc-card{display:flex;align-items:center;gap:14px;padding:18px 20px;border:1px solid var(--line);
+  border-radius:8px;background:rgba(255,255,255,.02);color:var(--text);text-decoration:none;transition:.2s}
+.contact-cta .cc-card:hover{border-color:var(--gold);background:rgba(200,164,77,.07);transform:translateY(-2px)}
+.contact-cta .cc-ic{width:46px;height:46px;flex-shrink:0;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:20px;background:rgba(200,164,77,.12);color:var(--gold-l);border:1px solid var(--line)}
+.contact-cta .cc-card.wa .cc-ic{background:rgba(37,211,102,.15);color:#25d366;border-color:rgba(37,211,102,.4)}
+.contact-cta .cc-t{display:flex;flex-direction:column;min-width:0}
+.contact-cta .cc-t b{color:var(--gold-l);font-size:14px;letter-spacing:.04em;font-weight:500}
+.contact-cta .cc-t small{color:var(--muted);font-size:13px;direction:ltr;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html[dir="rtl"] .contact-cta .cc-t{align-items:flex-start}
+@media(max-width:760px){.contact-cta{grid-template-columns:1fr}}
 
 /* ── hamburger + mobil menü ── */
 .hamburger{display:none;background:none;border:1px solid var(--line);color:var(--gold-l);

@@ -192,4 +192,32 @@ return [
 
     // footer
     'rights' => 'All rights reserved.',
+
+    // legal / footer links
+    'legal'        => 'Legal',
+    'f_privacy'    => 'Privacy Policy',
+    'f_distance'   => 'Distance Sales Agreement',
+    'f_refund'     => 'Cancellation & Refund',
+    'f_delivery'   => 'Delivery',
+    'f_cookies'    => 'Cookie Policy',
+    'f_terms'      => 'Terms of Use',
+
+    // checkout consent
+    'consent_and'      => 'and',
+    'consent_read'     => '— I have read and accept these.',
+    'consent_required' => 'You must accept the agreements to continue.',
+
+    // whatsapp
+    'wa_label' => 'Chat on WhatsApp',
+    'wa_text'  => 'Hello, I would like to get information about Demirbey Holding.',
+
+    // quick contact cards
+    'call_us'  => 'Call Us',
+    'wa_line'  => 'WhatsApp Line',
+    'email_us' => 'Email',
+
+    // compare picker
+    'c_add'    => 'Add Vehicle',
+    'c_pick'   => 'Select a vehicle to compare…',
+    'c_change' => 'Change',
 ];

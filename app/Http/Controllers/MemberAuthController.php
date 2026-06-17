@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Password;
 
 class MemberAuthController extends Controller
@@ -48,7 +50,15 @@ class MemberAuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
+        // Brute-force koruması: aynı e-posta+IP için 5 başarısız denemeden sonra 60 sn kilit
+        $key = 'member-login:' . Str::lower($data['email']) . '|' . $request->ip();
+        if (RateLimiter::tooManyAttempts($key, 5)) {
+            $sec = RateLimiter::availableIn($key);
+            return back()->withErrors(['email' => "Çok fazla başarısız deneme. {$sec} sn sonra tekrar deneyin."])->onlyInput('email');
+        }
+
         if (Auth::attempt($data, $request->boolean('remember'))) {
+            RateLimiter::clear($key);
             $request->session()->regenerate();
 
             // yönetici giriş yaptıysa panele yönlendir
@@ -59,6 +69,7 @@ class MemberAuthController extends Controller
             return redirect()->intended(route('member.account'));
         }
 
+        RateLimiter::hit($key, 60);
         return back()->withErrors(['email' => 'E-posta veya parola hatalı.'])->onlyInput('email');
     }
 

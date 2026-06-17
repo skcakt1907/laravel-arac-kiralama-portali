@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessageMail;
 use App\Models\Part;
 use App\Models\Vehicle;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -39,7 +42,7 @@ class HomeController extends Controller
 
     public function contact(Request $request)
     {
-        $request->validate([
+        $data = $request->validate([
             'name'    => ['required', 'string', 'max:120'],
             'email'   => ['required', 'email', 'max:160'],
             'phone'   => ['nullable', 'string', 'max:40'],
@@ -47,7 +50,14 @@ class HomeController extends Controller
             'message' => ['required', 'string', 'max:3000'],
         ]);
 
-        // NOT: Faz 4'te bu mesaj DB'ye kaydedilecek ve/veya e-posta gönderilecek.
+        // Mesajı admin e-postasına gönder (Site Ayarları > E-posta; yoksa MAIL_FROM).
+        // Mail başarısız olsa bile form akışı bozulmasın.
+        $to = setting('email') ?: config('mail.from.address');
+        try {
+            Mail::to($to)->send(new ContactMessageMail($data));
+        } catch (\Throwable $e) {
+            Log::warning('İletişim maili gönderilemedi: ' . $e->getMessage());
+        }
 
         return redirect()->to(url('/#iletisim'))->with('sent_ok', true);
     }

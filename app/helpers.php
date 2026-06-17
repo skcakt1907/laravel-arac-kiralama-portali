@@ -12,6 +12,26 @@ if (! function_exists('setting')) {
     }
 }
 
+if (! function_exists('embed_html')) {
+    /**
+     * Google Harita gibi gömülü iframe kodunu güvenli basar.
+     * Yalnızca <iframe> etiketine izin verir; <script>, on*= olay öznitelikleri
+     * ve javascript: protokolünü temizler. (map_embed saklı XSS koruması)
+     */
+    function embed_html(?string $html): string
+    {
+        if (! $html) {
+            return '';
+        }
+
+        $clean = strip_tags($html, '<iframe>');                                  // sadece iframe
+        $clean = preg_replace('/\son\w+\s*=\s*("[^"]*"|\'[^\']*\'|[^\s>]+)/i', '', $clean); // on*= kaldır
+        $clean = preg_replace('/javascript:/i', '', $clean);                     // javascript: kaldır
+
+        return $clean;
+    }
+}
+
 if (! function_exists('setting_l')) {
     /**
      * Çoklu dilli ayar: setting_l('about') -> about_tr / about_en / about_ar

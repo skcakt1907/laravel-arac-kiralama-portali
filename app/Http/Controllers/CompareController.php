@@ -13,9 +13,58 @@ class CompareController extends Controller
     public function index()
     {
         $ids = session(self::KEY, []);
-        $vehicles = Vehicle::published()->whereIn('id', $ids)->get();
+        // session sırasını koru
+        $vehicles = Vehicle::published()->whereIn('id', $ids)->get()
+            ->sortBy(fn ($v) => array_search($v->id, $ids))->values();
 
-        return view('vehicles.compare', compact('vehicles'));
+        // Dropdown'lar için tüm araçlar (marka/model)
+        $allVehicles = Vehicle::published()
+            ->orderBy('brand')->orderBy('model')
+            ->get(['id', 'brand', 'model']);
+
+        return view('vehicles.compare', [
+            'vehicles'    => $vehicles,
+            'allVehicles' => $allVehicles,
+            'max'         => self::MAX,
+        ]);
+    }
+
+    /** Dropdown'dan yeni araç ekle (sütun ekleme) */
+    public function store(Request $request)
+    {
+        $id  = (int) $request->input('vehicle_id');
+        $ids = session(self::KEY, []);
+
+        if ($id && ! in_array($id, $ids, true) && Vehicle::published()->whereKey($id)->exists()) {
+            if (count($ids) >= self::MAX) {
+                return back()->with('compare_msg', __('site.compare_full'));
+            }
+            $ids[] = $id;
+            session([self::KEY => $ids]);
+        }
+
+        return back();
+    }
+
+    /** Bir sütundaki aracı dropdown'dan seçilen araçla değiştir */
+    public function swap(Request $request, Vehicle $vehicle)
+    {
+        $newId = (int) $request->input('new_id');
+        $ids   = session(self::KEY, []);
+        $pos   = array_search($vehicle->id, $ids, true);
+
+        if ($pos !== false && $newId && Vehicle::published()->whereKey($newId)->exists()) {
+            $other = array_search($newId, $ids, true);
+            if ($other === false) {
+                $ids[$pos] = $newId;                    // boş bir araçla değiştir
+            } else {
+                $ids[$pos] = $newId;                    // listede zaten varsa yerlerini değiştir
+                $ids[$other] = $vehicle->id;
+            }
+            session([self::KEY => array_values($ids)]);
+        }
+
+        return back();
     }
 
     public function add(Request $request, Vehicle $vehicle)

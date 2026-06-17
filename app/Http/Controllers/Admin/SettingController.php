@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
@@ -27,6 +28,8 @@ class SettingController extends Controller
     public function update(Request $request)
     {
         $data = $request->validate([
+            'logo'     => ['nullable', 'image', 'mimes:png,jpg,jpeg,webp,svg', 'max:4096'],
+            'favicon'  => ['nullable', 'image', 'mimes:png,ico,jpg,webp,svg', 'max:1024'],
             'about_tr' => ['nullable', 'string'],
             'about_en' => ['nullable', 'string'],
             'about_ar' => ['nullable', 'string'],
@@ -52,6 +55,29 @@ class SettingController extends Controller
         foreach (self::KEYS as $k) {
             $pairs[$k] = $data[$k] ?? '';
         }
+
+        // Logo / favicon yüklemeleri (varsa eskisini sil, yenisini kaydet)
+        foreach (['logo', 'favicon'] as $img) {
+            if ($request->hasFile($img)) {
+                $old = Setting::get($img);
+                if ($old && ! str_starts_with($old, 'http')) {
+                    Storage::disk('public')->delete($old);
+                }
+                $pairs[$img] = $request->file($img)->store('brand', 'public');
+            }
+        }
+
+        // Görseli kaldırma kutuları
+        foreach (['logo', 'favicon'] as $img) {
+            if ($request->boolean('remove_' . $img)) {
+                $old = Setting::get($img);
+                if ($old && ! str_starts_with($old, 'http')) {
+                    Storage::disk('public')->delete($old);
+                }
+                $pairs[$img] = '';
+            }
+        }
+
         Setting::putMany($pairs);
 
         return back()->with('ok', 'Site ayarları kaydedildi.');

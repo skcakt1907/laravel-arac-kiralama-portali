@@ -39,7 +39,8 @@ class CheckoutController extends Controller
             'city'          => ['nullable', 'string', 'max:80'],
             'address'       => ['required', 'string', 'max:400'],
             'note'          => ['nullable', 'string', 'max:1000'],
-        ]);
+            'agree'         => ['accepted'],
+        ], ['agree.accepted' => __('site.consent_required')]);
 
         $items    = $this->cart->items();
         $subtotal = $this->cart->subtotal();
