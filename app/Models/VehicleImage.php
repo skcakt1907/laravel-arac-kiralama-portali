@@ -13,4 +13,12 @@ class VehicleImage extends Model
     {
         return $this->belongsTo(Vehicle::class);
     }
+
+    /** Harici (http) URL ise olduğu gibi, değilse storage'dan döndürür. */
+    public function getUrlAttribute(): string
+    {
+        return str_starts_with((string) $this->path, 'http')
+            ? $this->path
+            : asset('storage/' . ltrim((string) $this->path, '/'));
+    }
 }

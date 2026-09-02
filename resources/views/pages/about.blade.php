@@ -10,7 +10,7 @@
       <span class="diamond">✦</span>
     </div>
 
-    <p class="about-text">{{ setting_l('about', __('site.about_text')) }}</p>
+    <div class="about-text">{!! nl2br(e(setting_l('about', __('site.about_text')))) !!}</div>
 
     <div class="stats">
       <div class="stat"><b class="gold-grad">{{ setting('stat_delivered', '250+') }}</b><span>@lang('site.stat1')</span></div>

@@ -61,7 +61,7 @@
         @if ($vehicle->images->count())
           <div class="cars" style="grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px">
             @foreach ($vehicle->images as $img)
-              <img class="car-thumb" style="height:90px" src="{{ asset('storage/' . $img->path) }}" alt="">
+              <img class="car-thumb" style="height:90px" src="{{ $img->url }}" alt="">
             @endforeach
           </div>
         @endif

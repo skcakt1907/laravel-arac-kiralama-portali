@@ -3,24 +3,11 @@
 @section('content')
 
 <header class="hero">
-  <div class="kicker">@lang('site.kicker')</div>
-  <h1 class="gold-grad">@lang('site.brand_mark')</h1>
-  <div class="tag">@lang('site.tag')</div>
-
-  <svg class="car-art" viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="goldLine" x1="0" y1="0" x2="600" y2="0" gradientUnits="userSpaceOnUse">
-        <stop offset="0" stop-color="#8a6d2f"/><stop offset=".5" stop-color="#e9d6a0"/><stop offset="1" stop-color="#8a6d2f"/>
-      </linearGradient>
-    </defs>
-    <path class="draw" stroke="url(#goldLine)" stroke-width="2" stroke-linecap="round"
-      d="M30 150 C60 148 72 146 92 140 C98 119 112 104 152 97 C182 92 202 89 232 77 C252 63 282 55 320 55 C356 55 381 63 401 76 C431 88 471 94 511 102 C541 108 561 118 566 132 C569 142 561 148 546 150 L495 150 A40 40 0 0 0 415 150 L195 150 A40 40 0 0 0 115 150 L38 150"/>
-    <circle class="draw" cx="155" cy="150" r="29" stroke="url(#goldLine)" stroke-width="2"/>
-    <circle cx="155" cy="150" r="11" stroke="#c8a44d" stroke-width="1.4" opacity=".7"/>
-    <circle class="draw" cx="455" cy="150" r="29" stroke="url(#goldLine)" stroke-width="2"/>
-    <circle cx="455" cy="150" r="11" stroke="#c8a44d" stroke-width="1.4" opacity=".7"/>
-    <path d="M20 186 L580 186" stroke="#c8a44d" stroke-width="1" opacity=".3"/>
-  </svg>
+  <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="{{ asset('video/demirgrup-poster.jpg') }}">
+    <source src="{{ asset('video/demirgrup.mp4') }}" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <img class="hero-logo" src="{{ asset('img/logo-banner.png') }}" alt="{{ config('app.name') }}">
 
   <div class="cta-row">
     <a href="{{ route('vehicles.index') }}" class="btn solid">@lang('site.cta1')</a>

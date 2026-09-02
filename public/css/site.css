@@ -56,7 +56,7 @@ nav{
 .logo{text-align:center;text-decoration:none;display:block}
 .logo .mark{font-size:26px;letter-spacing:.32em;color:var(--champ)}
 .logo .sub{font-size:9px;letter-spacing:.52em;color:var(--gold);margin-top:3px;text-transform:uppercase}
-.logo .logo-img{max-height:54px;max-width:220px;width:auto;display:block;margin:0 auto;object-fit:contain}
+.logo .logo-img{max-height:88px;max-width:340px;width:auto;display:block;margin:0 auto;object-fit:contain}
 
 /* ── mega menu ── */
 .nav-item{position:static;display:flex;align-items:center}
@@ -105,12 +105,16 @@ nav{
 
 /* ── hero ── */
 .hero{
-  min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;position:relative;padding:80px 0 40px;
+  min-height:70vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;position:relative;overflow:hidden;padding:70px 0 36px;
   background:
     radial-gradient(ellipse 60% 45% at 50% 8%, rgba(200,164,77,.12), transparent 70%),
     radial-gradient(ellipse 80% 50% at 50% 110%, rgba(200,164,77,.07), transparent 70%);
 }
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(8,8,10,.78),rgba(8,8,10,.5) 42%,rgba(8,8,10,.9))}
+.hero>.kicker,.hero>h1,.hero>.tag,.hero>.car-art,.hero>.cta-row,.hero>.hero-logo{position:relative;z-index:2}
+.hero-logo{width:min(420px,72vw);height:auto;display:block;margin:10px auto 54px;filter:drop-shadow(0 8px 28px rgba(0,0,0,.55))}
 .kicker{
   font-size:12px;letter-spacing:.55em;color:var(--gold);text-transform:uppercase;
   display:flex;align-items:center;gap:18px;animation:fadeUp 1s .1s both;
@@ -197,7 +201,7 @@ section{padding:110px 0}
   font:inherit;font-size:13px;max-width:260px;cursor:pointer}
 .cmp-select:focus{outline:none;border-color:var(--gold)}
 .cmp-select.sm{font-size:12px;padding:6px 8px;max-width:160px}
-.cmp-select optgroup{color:var(--gold)} .cmp-select option{color:#111}
+.cmp-select optgroup{color:var(--gold);background:#0d0b07;font-weight:700} .cmp-select option{color:#ece3cc;background:#16130c}
 .cmp-head{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center}
 .cmp-head img{width:100%;max-width:210px;aspect-ratio:1/1;object-fit:cover;border:1px solid var(--line);background:#000}
 .cmp-noimg{width:100%;max-width:210px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
